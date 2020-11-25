@@ -18,10 +18,10 @@ namespace SeedDatabaseExtensions
 			context.Database.Log = (s => Debug.Write(s));
 
             // reset the db
-   /*         context.Database.Delete();
+            context.Database.Delete();
             context.Database.Create();
 
-            context.SaveChanges();*/
+            context.SaveChanges();
 
             // another way to reinitialize the database, resetting everything and zeroing out data
 
@@ -38,7 +38,7 @@ namespace SeedDatabaseExtensions
 
 
 			List<Guest> guestList = new List<Guest>()  {
-				new Guest { GuestId = 1, GuestFirstName = "Pepi", GuestLastName = "Nattrass", Adress = "209 Dixon Alle", 
+				new Guest {  GuestFirstName = "Pepi", GuestLastName = "Nattrass", Adress = "209 Dixon Alle", 
 					City = "Bangkok", PostCode = "66110", Country = "Thailand", Email = "pnattrass0@chron.com", Phone = "999-103-078" },
 				
 				new Guest { GuestFirstName = "Kennan", GuestLastName = "Ciottoi", Adress = "9921 Holy Cross Crossing",
@@ -52,11 +52,8 @@ namespace SeedDatabaseExtensions
 
 			};
 
-		
 			context.Guests.AddRange(guestList);
-			//context.SaveChanges();
-
-
+			context.SaveChanges();
 		}
 	}
 }

@@ -26,6 +26,33 @@ namespace ProjectTeam06Hotel
             context.SeedDatabase();
 
             this.Load += (s, e) => GuestForm_Load();
+
+            btnAddCustomerInfo.Click += BtnAddCustomerInfo_Click;
+        }
+
+        private void BtnAddCustomerInfo_Click(object sender, EventArgs e)
+        {
+            
+            if (!string.IsNullOrEmpty(txtBoxAddFirstName.Text) && !string.IsNullOrEmpty(txtBoxAddLastName.Text) && !string.IsNullOrEmpty(txtBoxAddCustomerAddress.Text)
+                && !string.IsNullOrEmpty(txtBoxAddCity.Text) && !string.IsNullOrEmpty(txtBoxAddPostCode.Text) && !string.IsNullOrEmpty(txtBoxAddCountry.Text)
+                && !string.IsNullOrEmpty(txtBoxAddEmail.Text) && !string.IsNullOrEmpty(txtBoxAddCustomerPhone.Text))
+            {
+                context.Guests.Add(new Guest
+                {
+                    GuestFirstName = txtBoxAddFirstName.Text,
+                    GuestLastName = txtBoxAddLastName.Text,
+                    Adress = txtBoxAddCustomerAddress.Text,
+                    City = txtBoxAddCity.Text,
+                    PostCode = txtBoxAddPostCode.Text,
+                    Country = txtBoxAddPostCode.Text,
+                    Email = txtBoxAddEmail.Text,
+                    Phone = txtBoxAddCustomerPhone.Text
+                });
+                this.DialogResult = DialogResult.OK;
+                
+                /*dataGridViewCustomer.DataSource = context.Guests.ToList();
+                context.SaveChanges();*/
+            }
         }
 
         /// <summary>
@@ -39,6 +66,7 @@ namespace ProjectTeam06Hotel
 
             this.dataGridViewCustomer.Columns["Payments"].Visible = false;
             this.dataGridViewCustomer.Columns["Reservations"].Visible = false;
+            //dataGridViewCustomer.DataSource = context.Guests.ToList();
 
         }
         private void InitializeDataGridView<T>(DataGridView gridView, params string[] navProperties) where T : class
