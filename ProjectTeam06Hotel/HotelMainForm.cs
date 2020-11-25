@@ -15,18 +15,22 @@ namespace ProjectTeam06Hotel
         public HotelMainForm()
         {
             InitializeComponent();
+
+            buttonAdmin.Click += ButtonAdmin_Click;
+            buttonFrontDesk.Click += ButtonFrontDesk_Click;
         }
 
-        private void RoomInfoToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            RoomInfoForm roomInfo = new RoomInfoForm();
-            roomInfo.ShowDialog(); 
-        }
-
-        private void CustomerToolStripMenuItem_Click(object sender, EventArgs e)
+        private void ButtonFrontDesk_Click(object sender, EventArgs e)
         {
             CustomerForm customerForm = new CustomerForm();
             customerForm.ShowDialog();
         }
+
+        private void ButtonAdmin_Click(object sender, EventArgs e)
+        {
+            RoomInfoForm roomInfo = new RoomInfoForm();
+            roomInfo.ShowDialog();
+        }
+
     }
 }
