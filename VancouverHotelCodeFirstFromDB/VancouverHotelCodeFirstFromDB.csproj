@@ -61,6 +61,7 @@
     <Compile Include="Room.cs" />
     <Compile Include="RoomReservation.cs" />
     <Compile Include="RoomType.cs" />
+    <Compile Include="SeedDatabaseExtensionMethods.cs" />
     <Compile Include="VancouverHotelEntities.cs" />
   </ItemGroup>
   <ItemGroup>
