@@ -68,4 +68,7 @@
   <ItemGroup>
     <RefactorLog Include="VancouverHotelDB.refactorlog" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="VancouverHotelDB.publish.xml" />
+  </ItemGroup>
 </Project>
