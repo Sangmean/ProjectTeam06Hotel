@@ -7,6 +7,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using VancouverHotelCodeFirstFromDB;
+using System.Data.Entity;
+using System.Diagnostics;
 
 namespace ProjectTeam06Hotel
 {
