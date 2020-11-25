@@ -21,6 +21,21 @@ namespace ProjectTeam06Hotel
 
             buttonAdmin.Click += ButtonAdmin_Click;
             buttonFrontDesk.Click += ButtonFrontDesk_Click;
+            buttonPayment.Click += ButtonPayment_Click;
+            buttonReservation.Click += ButtonReservation_Click;
+          
+        }
+
+        private void ButtonReservation_Click(object sender, EventArgs e)
+        {
+            Reservation reservation = new Reservation();
+            reservation.ShowDialog();
+        }
+
+        private void ButtonPayment_Click(object sender, EventArgs e)
+        {
+            Payment payment = new Payment();
+            payment.ShowDialog();
         }
 
         private void ButtonFrontDesk_Click(object sender, EventArgs e)
