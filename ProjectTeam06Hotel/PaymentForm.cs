@@ -10,13 +10,15 @@ using System.Windows.Forms;
 
 namespace ProjectTeam06Hotel
 {
-    public partial class Payment : Form
+    public partial class PaymentForm : Form
     {
-        public Payment()
+        public PaymentForm()
         {
             InitializeComponent();
+
+            this.Text = "Payment Form";
         }
 
- 
+    
     }
 }

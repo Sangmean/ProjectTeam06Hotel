@@ -18,6 +18,7 @@ namespace ProjectTeam06Hotel
         public RoomInfoForm()
         {
             InitializeComponent();
+            this.Text = "Room Information Form";
         }
     }
 }

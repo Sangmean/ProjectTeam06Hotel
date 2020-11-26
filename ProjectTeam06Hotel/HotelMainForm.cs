@@ -19,6 +19,8 @@ namespace ProjectTeam06Hotel
         {
             InitializeComponent();
 
+            this.Text = "Vancouver Beachside Hotel";    
+
             buttonAdmin.Click += ButtonAdmin_Click;
             buttonFrontDesk.Click += ButtonFrontDesk_Click;
             buttonPayment.Click += ButtonPayment_Click;
@@ -28,19 +30,19 @@ namespace ProjectTeam06Hotel
 
         private void ButtonReservation_Click(object sender, EventArgs e)
         {
-            Reservation reservation = new Reservation();
+            ReservationForm reservation = new ReservationForm();
             reservation.ShowDialog();
         }
 
         private void ButtonPayment_Click(object sender, EventArgs e)
         {
-            Payment payment = new Payment();
+            PaymentForm payment = new PaymentForm();
             payment.ShowDialog();
         }
 
         private void ButtonFrontDesk_Click(object sender, EventArgs e)
         {
-            CustomerForm customerForm = new CustomerForm();
+            GuestForm customerForm = new GuestForm();
             customerForm.ShowDialog();
         }
 

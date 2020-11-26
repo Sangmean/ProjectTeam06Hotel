@@ -9,7 +9,7 @@ namespace VancouverHotelCodeFirstFromDB
     [Table("Payment")]
     public partial class Payment
     {
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int PaymentId { get; set; }
 
         public int? ReservationId { get; set; }

@@ -16,7 +16,7 @@ namespace VancouverHotelCodeFirstFromDB
             RoomTypes = new HashSet<RoomType>();
         }
 
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int RoomId { get; set; }
 
         public int? RoomTypeId { get; set; }

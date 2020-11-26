@@ -10,11 +10,13 @@ using System.Windows.Forms;
 
 namespace ProjectTeam06Hotel
 {
-    public partial class Reservation : Form
+    public partial class ReservationForm : Form
     {
-        public Reservation()
+        public ReservationForm()
         {
             InitializeComponent();
+
+            this.Text = "Reservation Form";
         }
     }
 }

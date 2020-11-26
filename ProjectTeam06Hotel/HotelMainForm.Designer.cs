@@ -43,7 +43,7 @@
             this.labelTxtMain.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.labelTxtMain.Font = new System.Drawing.Font("Microsoft Sans Serif", 36F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelTxtMain.ForeColor = System.Drawing.Color.White;
-            this.labelTxtMain.Location = new System.Drawing.Point(233, 29);
+            this.labelTxtMain.Location = new System.Drawing.Point(213, 29);
             this.labelTxtMain.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labelTxtMain.Name = "labelTxtMain";
             this.labelTxtMain.Size = new System.Drawing.Size(398, 328);

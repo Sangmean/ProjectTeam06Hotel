@@ -29,11 +29,11 @@ namespace VancouverHotelCodeFirstFromDB
             modelBuilder.Entity<Room>()
                 .HasOptional(e => e.RoomReservation)
                 .WithRequired(e => e.Room);
-
+/*
             modelBuilder.Entity<Room>()
                 .HasMany(e => e.RoomTypes)
                 .WithOptional(e => e.Room)
-                .HasForeignKey(e => e.RoomId);
+                .HasForeignKey(e => e.RoomId);*/
 
             modelBuilder.Entity<RoomType>()
                 .Property(e => e.PricePerNight)

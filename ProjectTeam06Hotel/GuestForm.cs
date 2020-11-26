@@ -14,13 +14,14 @@ using SeedDatabaseExtensions;
 
 namespace ProjectTeam06Hotel
 {
-    public partial class CustomerForm : Form
+    public partial class GuestForm : Form
     {
         private VancouverHotelEntities context;
-        public CustomerForm()
+        public GuestForm()
         {
             InitializeComponent();
 
+            this.Text = "Guest Form";
             context = new VancouverHotelEntities();
             context.Database.Log = (s => Debug.Write(s));
             context.SeedDatabase();

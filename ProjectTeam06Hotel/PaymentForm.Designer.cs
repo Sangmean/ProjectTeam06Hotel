@@ -1,6 +1,6 @@
 ﻿namespace ProjectTeam06Hotel
 {
-    partial class Payment
+    partial class PaymentForm
     {
         /// <summary>
         /// Required designer variable.

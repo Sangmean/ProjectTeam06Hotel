@@ -1,6 +1,6 @@
 ﻿namespace ProjectTeam06Hotel
 {
-    partial class CustomerForm
+    partial class GuestForm
     {
         /// <summary>
         /// Required designer variable.
@@ -469,7 +469,7 @@
             this.label11.TabIndex = 25;
             this.label11.Text = "Last Name";
             // 
-            // CustomerForm
+            // GuestForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -479,7 +479,7 @@
             this.Controls.Add(this.btnDeleteCustomer);
             this.Controls.Add(this.labelTxtCustomerInfo);
             this.Controls.Add(this.groupBox3);
-            this.Name = "CustomerForm";
+            this.Name = "GuestForm";
             this.Text = "Customer";
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewCustomer)).EndInit();
             this.groupBox4.ResumeLayout(false);

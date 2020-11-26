@@ -15,14 +15,12 @@ namespace VancouverHotelCodeFirstFromDB
             Rooms = new HashSet<Room>();
         }
 
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int RoomTypeId { get; set; }
-
-        public int? RoomId { get; set; }
 
         [Column("RoomType")]
         [StringLength(50)]
-        public string RoomType1 { get; set; }
+        public string RoomTypeName{ get; set; }
 
         [StringLength(50)]
         public string Status { get; set; }
@@ -34,6 +32,6 @@ namespace VancouverHotelCodeFirstFromDB
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Room> Rooms { get; set; }
 
-        public virtual Room Room { get; set; }
+       // public virtual Room Room { get; set; }
     }
 }

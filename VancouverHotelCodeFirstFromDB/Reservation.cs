@@ -16,7 +16,7 @@ namespace VancouverHotelCodeFirstFromDB
             RoomReservations = new HashSet<RoomReservation>();
         }
 
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int ReservationId { get; set; }
 
         public int? GuestId { get; set; }

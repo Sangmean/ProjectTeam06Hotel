@@ -10,7 +10,7 @@ namespace VancouverHotelCodeFirstFromDB
     public partial class RoomReservation
     {
         [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int RoomId { get; set; }
 
         public int? ReservationId { get; set; }
