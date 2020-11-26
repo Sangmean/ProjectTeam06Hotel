@@ -43,10 +43,10 @@
             this.labelTxtMain.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.labelTxtMain.Font = new System.Drawing.Font("Microsoft Sans Serif", 36F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelTxtMain.ForeColor = System.Drawing.Color.White;
-            this.labelTxtMain.Location = new System.Drawing.Point(279, 43);
+            this.labelTxtMain.Location = new System.Drawing.Point(233, 29);
             this.labelTxtMain.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labelTxtMain.Name = "labelTxtMain";
-            this.labelTxtMain.Size = new System.Drawing.Size(268, 220);
+            this.labelTxtMain.Size = new System.Drawing.Size(398, 328);
             this.labelTxtMain.TabIndex = 1;
             this.labelTxtMain.Text = "Vancouver \r\nBeachside\r\nHotel\r\n";
             this.labelTxtMain.TextAlign = System.Drawing.ContentAlignment.TopCenter;
@@ -89,7 +89,7 @@
             this.buttonReservation.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonReservation.ForeColor = System.Drawing.Color.White;
             this.buttonReservation.Image = ((System.Drawing.Image)(resources.GetObject("buttonReservation.Image")));
-            this.buttonReservation.Location = new System.Drawing.Point(114, 496);
+            this.buttonReservation.Location = new System.Drawing.Point(91, 496);
             this.buttonReservation.Name = "buttonReservation";
             this.buttonReservation.Size = new System.Drawing.Size(280, 158);
             this.buttonReservation.TabIndex = 6;

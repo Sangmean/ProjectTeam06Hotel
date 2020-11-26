@@ -37,7 +37,7 @@ namespace ProjectTeam06Hotel
                 && !string.IsNullOrEmpty(txtBoxAddCity.Text) && !string.IsNullOrEmpty(txtBoxAddPostCode.Text) && !string.IsNullOrEmpty(txtBoxAddCountry.Text)
                 && !string.IsNullOrEmpty(txtBoxAddEmail.Text) && !string.IsNullOrEmpty(txtBoxAddCustomerPhone.Text))
             {
-                context.Guests.Add(new Guest
+                context.Guests.Add(new Guest    
                 {
                     GuestFirstName = txtBoxAddFirstName.Text,
                     GuestLastName = txtBoxAddLastName.Text,
