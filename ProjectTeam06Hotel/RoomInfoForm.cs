@@ -5,7 +5,7 @@ using VancouverHotelCodeFirstFromDB;
 using System.Windows.Forms;
 using System.Data.Entity;
 using System.Diagnostics;
-using EFControllerUtilities;
+/*using EFControllerUtilities;*/
 using SeedDatabaseExtensions;
 
 namespace ProjectTeam06Hotel
@@ -38,13 +38,13 @@ namespace ProjectTeam06Hotel
                 Status = selectedStatus,
                 Capacity = int.Parse(textBoxCapacity.Text)
             };
-
+/*
             if (Controller<VancouverHotelEntities, RoomType>.AddEntity(roomType) == null)
             {
                 MessageBox.Show("Cannot add student to database");
                 return;
             }
-
+*/
             RoomInfoForm_Load();
             context.SaveChanges();
     

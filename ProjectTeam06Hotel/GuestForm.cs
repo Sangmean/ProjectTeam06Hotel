@@ -11,7 +11,7 @@ using VancouverHotelCodeFirstFromDB;
 using System.Data.Entity;
 using System.Diagnostics;
 using SeedDatabaseExtensions;
-using EFControllerUtilities;
+/*using EFControllerUtilities;*/
 
 namespace ProjectTeam06Hotel
 {

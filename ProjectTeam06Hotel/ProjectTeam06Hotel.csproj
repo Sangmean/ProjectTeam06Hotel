@@ -127,10 +127,6 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\CSIS4050_Lab8\EFControllerUtilities\EFControllerUtilities.csproj">
-      <Project>{f7b44d6d-563a-4d6d-9718-b554924b4d97}</Project>
-      <Name>EFControllerUtilities</Name>
-    </ProjectReference>
     <ProjectReference Include="..\VancouverHotelCodeFirstFromDB\VancouverHotelCodeFirstFromDB.csproj">
       <Project>{1b41079c-c43c-4432-b986-34b06819ebde}</Project>
       <Name>VancouverHotelCodeFirstFromDB</Name>
