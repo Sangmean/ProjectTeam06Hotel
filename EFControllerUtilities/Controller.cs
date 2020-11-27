@@ -287,11 +287,9 @@ namespace EFControllerUtilities
         public static bool UpdateEntity(E entity)
         {
             bool result = false;
-
+         
             if (entity == null)
                 return false;
-
- 
 
             using (var context = SetContext())
             {

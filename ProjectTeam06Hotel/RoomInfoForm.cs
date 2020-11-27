@@ -13,6 +13,7 @@ namespace ProjectTeam06Hotel
     public partial class RoomInfoForm : Form
     {
         private VancouverHotelEntities context;
+        private int selectedRoomId;
         public RoomInfoForm()
         {
             InitializeComponent();
@@ -24,6 +25,69 @@ namespace ProjectTeam06Hotel
 
             this.Load += (s, e) => RoomInfoForm_Load();
             buttonRoomTypeAdd.Click += ButtonRoomTypeAdd_Click;
+            buttonRoomTypeUpdate.Click += ButtonRoomTypeUpdate_Click;
+            buttonRoomTypeDelete.Click += ButtonRoomTypeDelete_Click;
+            dataGridViewRoom.SelectionChanged += DataGridViewRoom_SelectionChanged;
+            
+        }
+
+        private void ButtonRoomTypeDelete_Click(object sender, EventArgs e)
+        {
+            foreach (DataGridViewRow row in dataGridViewRoom.SelectedRows)
+            {
+                RoomType roomType = row.DataBoundItem as RoomType;
+                context.RoomTypes.Remove(roomType);
+            }
+
+            context.SaveChanges();
+            RoomInfoForm_Load();
+
+        }
+
+        private void ButtonRoomTypeUpdate_Click(object sender, EventArgs e)
+        {
+            if ((dataGridViewRoom.SelectedRows == null))
+            {
+                MessageBox.Show("Room to be updated must be selected");
+                return;
+            }
+
+            RoomType roomType = new RoomType();
+            string selectedStatus = listBoxStatus.SelectedItem.ToString();
+
+            roomType.RoomTypeId = selectedRoomId;
+            roomType.RoomTypeName = textBoxAddRoomType.Text;      
+            roomType.PricePerNight = decimal.Parse(textBoxPricePerNight.Text);
+            roomType.Status = selectedStatus;
+            roomType.Capacity = int.Parse(textBoxCapacity.Text);
+  
+            if (Controller<VancouverHotelEntities, RoomType>.UpdateEntity(roomType) == false)
+            {
+                MessageBox.Show("Cannot update room type to database"); 
+                return;
+            }
+
+            context = new VancouverHotelEntities();
+            RoomInfoForm_Load();
+            context.SaveChanges();
+        }
+
+        private void DataGridViewRoom_SelectionChanged(object sender, EventArgs e)
+        {  
+            RoomType roomType = new RoomType();
+
+            foreach (DataGridViewRow row in dataGridViewRoom.SelectedRows)
+                 roomType = row.DataBoundItem as RoomType;
+
+            textBoxAddRoomType.Text = roomType.RoomTypeName;
+            textBoxPricePerNight.Text = roomType.PricePerNight.ToString();
+            textBoxCapacity.Text = roomType.Capacity.ToString();
+            selectedRoomId = roomType.RoomTypeId;
+
+            if (roomType.Status == "Occupied")
+                listBoxStatus.SelectedIndex = 0;
+            else
+                listBoxStatus.SelectedIndex = 1;
         }
 
         private void ButtonRoomTypeAdd_Click(object sender, EventArgs e)
@@ -59,7 +123,7 @@ namespace ProjectTeam06Hotel
 
             InitializeDataGridView<RoomType>(dataGridViewRoom, "RoomType");
 
-            this.dataGridViewRoom.Columns["Rooms"].Visible = false;
+            //this.dataGridViewRoom.Columns["Rooms"].Visible = false;
             dataGridViewRoom.DataSource = context.RoomTypes.ToList();
 
         }
@@ -72,17 +136,6 @@ namespace ProjectTeam06Hotel
             gridView.AllowUserToDeleteRows = true;
             gridView.ReadOnly = true;
             gridView.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            /*
-                        // set the handler used to delete an item. Note use of generics.
-
-                        gridView.UserDeletedRow += GridView_UserDeletedRow<T>;
-
-                        // probably not needed, but just in case we have some issues
-
-                        gridView.DataError += (s, e) => GridView_DataError<T>(s as DataGridView, e);*/
-
-            // create a binding list and set the DataSource
-
             gridView.DataSource = SetBindingList<T>();
 
         }

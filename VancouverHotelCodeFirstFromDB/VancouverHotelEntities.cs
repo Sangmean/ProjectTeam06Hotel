@@ -39,10 +39,10 @@ namespace VancouverHotelCodeFirstFromDB
                 .Property(e => e.PricePerNight)
                 .HasPrecision(18, 0);
 
-            modelBuilder.Entity<RoomType>()
+   /*         modelBuilder.Entity<RoomType>()
                 .HasMany(e => e.Rooms)
                 .WithOptional(e => e.RoomType)
-                .HasForeignKey(e => e.RoomTypeId);
+                .HasForeignKey(e => e.RoomTypeId);*/
         }
     }
 }

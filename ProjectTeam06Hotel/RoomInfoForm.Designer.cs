@@ -31,16 +31,17 @@
             this.labelTxtRoomInfo = new System.Windows.Forms.Label();
             this.dataGridViewRoom = new System.Windows.Forms.DataGridView();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.buttonRoomTypeUpdate = new System.Windows.Forms.Button();
+            this.listBoxStatus = new System.Windows.Forms.ListBox();
+            this.textBoxCapacity = new System.Windows.Forms.TextBox();
+            this.labelCapacity = new System.Windows.Forms.Label();
+            this.labelStatus = new System.Windows.Forms.Label();
             this.buttonRoomTypeAdd = new System.Windows.Forms.Button();
             this.textBoxPricePerNight = new System.Windows.Forms.TextBox();
             this.labelRoomPrice = new System.Windows.Forms.Label();
             this.textBoxAddRoomType = new System.Windows.Forms.TextBox();
             this.labelRoomName = new System.Windows.Forms.Label();
-            this.labelStatus = new System.Windows.Forms.Label();
-            this.labelCapacity = new System.Windows.Forms.Label();
-            this.textBoxCapacity = new System.Windows.Forms.TextBox();
-            this.listBoxStatus = new System.Windows.Forms.ListBox();
-            this.buttonUpdate = new System.Windows.Forms.Button();
+            this.buttonRoomTypeDelete = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewRoom)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -69,7 +70,8 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.buttonUpdate);
+            this.groupBox1.Controls.Add(this.buttonRoomTypeDelete);
+            this.groupBox1.Controls.Add(this.buttonRoomTypeUpdate);
             this.groupBox1.Controls.Add(this.listBoxStatus);
             this.groupBox1.Controls.Add(this.textBoxCapacity);
             this.groupBox1.Controls.Add(this.labelCapacity);
@@ -88,14 +90,64 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Room Information";
             // 
+            // buttonRoomTypeUpdate
+            // 
+            this.buttonRoomTypeUpdate.Location = new System.Drawing.Point(330, 170);
+            this.buttonRoomTypeUpdate.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.buttonRoomTypeUpdate.Name = "buttonRoomTypeUpdate";
+            this.buttonRoomTypeUpdate.Size = new System.Drawing.Size(112, 35);
+            this.buttonRoomTypeUpdate.TabIndex = 10;
+            this.buttonRoomTypeUpdate.Text = "UPDATE";
+            this.buttonRoomTypeUpdate.UseVisualStyleBackColor = true;
+            // 
+            // listBoxStatus
+            // 
+            this.listBoxStatus.FormattingEnabled = true;
+            this.listBoxStatus.ItemHeight = 20;
+            this.listBoxStatus.Items.AddRange(new object[] {
+            "Occupied",
+            "Vacant"});
+            this.listBoxStatus.Location = new System.Drawing.Point(513, 51);
+            this.listBoxStatus.Name = "listBoxStatus";
+            this.listBoxStatus.Size = new System.Drawing.Size(188, 44);
+            this.listBoxStatus.TabIndex = 9;
+            // 
+            // textBoxCapacity
+            // 
+            this.textBoxCapacity.Location = new System.Drawing.Point(513, 111);
+            this.textBoxCapacity.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.textBoxCapacity.Name = "textBoxCapacity";
+            this.textBoxCapacity.Size = new System.Drawing.Size(188, 26);
+            this.textBoxCapacity.TabIndex = 8;
+            // 
+            // labelCapacity
+            // 
+            this.labelCapacity.AutoSize = true;
+            this.labelCapacity.Location = new System.Drawing.Point(404, 111);
+            this.labelCapacity.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.labelCapacity.Name = "labelCapacity";
+            this.labelCapacity.Size = new System.Drawing.Size(70, 20);
+            this.labelCapacity.TabIndex = 6;
+            this.labelCapacity.Text = "Capacity";
+            // 
+            // labelStatus
+            // 
+            this.labelStatus.AutoSize = true;
+            this.labelStatus.Location = new System.Drawing.Point(404, 54);
+            this.labelStatus.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.labelStatus.Name = "labelStatus";
+            this.labelStatus.Size = new System.Drawing.Size(56, 20);
+            this.labelStatus.TabIndex = 5;
+            this.labelStatus.Text = "Status";
+            // 
             // buttonRoomTypeAdd
             // 
-            this.buttonRoomTypeAdd.Location = new System.Drawing.Point(185, 170);
+            this.buttonRoomTypeAdd.Location = new System.Drawing.Point(92, 170);
             this.buttonRoomTypeAdd.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.buttonRoomTypeAdd.Name = "buttonRoomTypeAdd";
             this.buttonRoomTypeAdd.Size = new System.Drawing.Size(112, 35);
             this.buttonRoomTypeAdd.TabIndex = 4;
-            this.buttonRoomTypeAdd.Text = "Add Room";
+            this.buttonRoomTypeAdd.Text = "ADD";
             this.buttonRoomTypeAdd.UseVisualStyleBackColor = true;
             // 
             // textBoxPricePerNight
@@ -134,55 +186,15 @@
             this.labelRoomName.TabIndex = 0;
             this.labelRoomName.Text = "Room Type";
             // 
-            // labelStatus
+            // buttonRoomTypeDelete
             // 
-            this.labelStatus.AutoSize = true;
-            this.labelStatus.Location = new System.Drawing.Point(404, 54);
-            this.labelStatus.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.labelStatus.Name = "labelStatus";
-            this.labelStatus.Size = new System.Drawing.Size(56, 20);
-            this.labelStatus.TabIndex = 5;
-            this.labelStatus.Text = "Status";
-            // 
-            // labelCapacity
-            // 
-            this.labelCapacity.AutoSize = true;
-            this.labelCapacity.Location = new System.Drawing.Point(404, 111);
-            this.labelCapacity.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.labelCapacity.Name = "labelCapacity";
-            this.labelCapacity.Size = new System.Drawing.Size(70, 20);
-            this.labelCapacity.TabIndex = 6;
-            this.labelCapacity.Text = "Capacity";
-            // 
-            // textBoxCapacity
-            // 
-            this.textBoxCapacity.Location = new System.Drawing.Point(513, 111);
-            this.textBoxCapacity.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.textBoxCapacity.Name = "textBoxCapacity";
-            this.textBoxCapacity.Size = new System.Drawing.Size(188, 26);
-            this.textBoxCapacity.TabIndex = 8;
-            // 
-            // listBoxStatus
-            // 
-            this.listBoxStatus.FormattingEnabled = true;
-            this.listBoxStatus.ItemHeight = 20;
-            this.listBoxStatus.Items.AddRange(new object[] {
-            "Occupied",
-            "Vacant"});
-            this.listBoxStatus.Location = new System.Drawing.Point(513, 51);
-            this.listBoxStatus.Name = "listBoxStatus";
-            this.listBoxStatus.Size = new System.Drawing.Size(188, 44);
-            this.listBoxStatus.TabIndex = 9;
-            // 
-            // buttonUpdate
-            // 
-            this.buttonUpdate.Location = new System.Drawing.Point(513, 170);
-            this.buttonUpdate.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.buttonUpdate.Name = "buttonUpdate";
-            this.buttonUpdate.Size = new System.Drawing.Size(112, 35);
-            this.buttonUpdate.TabIndex = 10;
-            this.buttonUpdate.Text = "Update Room";
-            this.buttonUpdate.UseVisualStyleBackColor = true;
+            this.buttonRoomTypeDelete.Location = new System.Drawing.Point(575, 170);
+            this.buttonRoomTypeDelete.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.buttonRoomTypeDelete.Name = "buttonRoomTypeDelete";
+            this.buttonRoomTypeDelete.Size = new System.Drawing.Size(112, 35);
+            this.buttonRoomTypeDelete.TabIndex = 11;
+            this.buttonRoomTypeDelete.Text = "DELETE";
+            this.buttonRoomTypeDelete.UseVisualStyleBackColor = true;
             // 
             // RoomInfoForm
             // 
@@ -216,7 +228,8 @@
         private System.Windows.Forms.Label labelStatus;
         private System.Windows.Forms.TextBox textBoxCapacity;
         private System.Windows.Forms.Label labelCapacity;
-        private System.Windows.Forms.Button buttonUpdate;
+        private System.Windows.Forms.Button buttonRoomTypeUpdate;
         private System.Windows.Forms.ListBox listBoxStatus;
+        private System.Windows.Forms.Button buttonRoomTypeDelete;
     }
 }
