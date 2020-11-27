@@ -32,9 +32,9 @@
             this.dataGridViewRoom = new System.Windows.Forms.DataGridView();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.buttonRoomTypeAdd = new System.Windows.Forms.Button();
-            this.txtBoxPricePerNight = new System.Windows.Forms.TextBox();
+            this.textBoxPricePerNight = new System.Windows.Forms.TextBox();
             this.labelRoomPrice = new System.Windows.Forms.Label();
-            this.txtBoxAddRoomType = new System.Windows.Forms.TextBox();
+            this.textBoxAddRoomType = new System.Windows.Forms.TextBox();
             this.labelRoomName = new System.Windows.Forms.Label();
             this.labelStatus = new System.Windows.Forms.Label();
             this.labelCapacity = new System.Windows.Forms.Label();
@@ -75,9 +75,9 @@
             this.groupBox1.Controls.Add(this.labelCapacity);
             this.groupBox1.Controls.Add(this.labelStatus);
             this.groupBox1.Controls.Add(this.buttonRoomTypeAdd);
-            this.groupBox1.Controls.Add(this.txtBoxPricePerNight);
+            this.groupBox1.Controls.Add(this.textBoxPricePerNight);
             this.groupBox1.Controls.Add(this.labelRoomPrice);
-            this.groupBox1.Controls.Add(this.txtBoxAddRoomType);
+            this.groupBox1.Controls.Add(this.textBoxAddRoomType);
             this.groupBox1.Controls.Add(this.labelRoomName);
             this.groupBox1.Location = new System.Drawing.Point(108, 158);
             this.groupBox1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
@@ -98,13 +98,13 @@
             this.buttonRoomTypeAdd.Text = "Add Room";
             this.buttonRoomTypeAdd.UseVisualStyleBackColor = true;
             // 
-            // txtBoxPricePerNight
+            // textBoxPricePerNight
             // 
-            this.txtBoxPricePerNight.Location = new System.Drawing.Point(118, 111);
-            this.txtBoxPricePerNight.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.txtBoxPricePerNight.Name = "txtBoxPricePerNight";
-            this.txtBoxPricePerNight.Size = new System.Drawing.Size(188, 26);
-            this.txtBoxPricePerNight.TabIndex = 3;
+            this.textBoxPricePerNight.Location = new System.Drawing.Point(118, 111);
+            this.textBoxPricePerNight.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.textBoxPricePerNight.Name = "textBoxPricePerNight";
+            this.textBoxPricePerNight.Size = new System.Drawing.Size(188, 26);
+            this.textBoxPricePerNight.TabIndex = 3;
             // 
             // labelRoomPrice
             // 
@@ -116,13 +116,13 @@
             this.labelRoomPrice.TabIndex = 2;
             this.labelRoomPrice.Text = "Room Price";
             // 
-            // txtBoxAddRoomType
+            // textBoxAddRoomType
             // 
-            this.txtBoxAddRoomType.Location = new System.Drawing.Point(118, 51);
-            this.txtBoxAddRoomType.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.txtBoxAddRoomType.Name = "txtBoxAddRoomType";
-            this.txtBoxAddRoomType.Size = new System.Drawing.Size(188, 26);
-            this.txtBoxAddRoomType.TabIndex = 1;
+            this.textBoxAddRoomType.Location = new System.Drawing.Point(118, 51);
+            this.textBoxAddRoomType.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.textBoxAddRoomType.Name = "textBoxAddRoomType";
+            this.textBoxAddRoomType.Size = new System.Drawing.Size(188, 26);
+            this.textBoxAddRoomType.TabIndex = 1;
             // 
             // labelRoomName
             // 
@@ -167,8 +167,8 @@
             this.listBoxStatus.FormattingEnabled = true;
             this.listBoxStatus.ItemHeight = 20;
             this.listBoxStatus.Items.AddRange(new object[] {
-            "Ocupied",
-            "Vacancy"});
+            "Occupied",
+            "Vacant"});
             this.listBoxStatus.Location = new System.Drawing.Point(513, 51);
             this.listBoxStatus.Name = "listBoxStatus";
             this.listBoxStatus.Size = new System.Drawing.Size(188, 44);
@@ -209,9 +209,9 @@
         private System.Windows.Forms.DataGridView dataGridViewRoom;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Button buttonRoomTypeAdd;
-        private System.Windows.Forms.TextBox txtBoxPricePerNight;
+        private System.Windows.Forms.TextBox textBoxPricePerNight;
         private System.Windows.Forms.Label labelRoomPrice;
-        private System.Windows.Forms.TextBox txtBoxAddRoomType;
+        private System.Windows.Forms.TextBox textBoxAddRoomType;
         private System.Windows.Forms.Label labelRoomName;
         private System.Windows.Forms.Label labelStatus;
         private System.Windows.Forms.TextBox textBoxCapacity;

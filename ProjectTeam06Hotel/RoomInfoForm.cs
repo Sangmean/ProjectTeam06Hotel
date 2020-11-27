@@ -1,15 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using VancouverHotelCodeFirstFromDB;
 using System.Windows.Forms;
 using System.Data.Entity;
 using System.Diagnostics;
+using EFControllerUtilities;
 using SeedDatabaseExtensions;
 
 namespace ProjectTeam06Hotel
@@ -26,13 +22,38 @@ namespace ProjectTeam06Hotel
             context.Database.Log = (s => Debug.Write(s));
             context.SeedDatabase();
 
-            this.Load += (s, e) => GuestForm_Load();
+            this.Load += (s, e) => RoomInfoForm_Load();
+            buttonRoomTypeAdd.Click += ButtonRoomTypeAdd_Click;
+        }
+
+        private void ButtonRoomTypeAdd_Click(object sender, EventArgs e)
+        {
+            string selectedStatus = listBoxStatus.SelectedItem.ToString();
+
+
+            RoomType roomType = new RoomType()
+            {
+                RoomTypeName = textBoxAddRoomType.Text,
+                PricePerNight = Decimal.Parse(textBoxPricePerNight.Text),
+                Status = selectedStatus,
+                Capacity = int.Parse(textBoxCapacity.Text)
+            };
+
+            if (Controller<VancouverHotelEntities, RoomType>.AddEntity(roomType) == null)
+            {
+                MessageBox.Show("Cannot add student to database");
+                return;
+            }
+
+            RoomInfoForm_Load();
+            context.SaveChanges();
+    
         }
 
         /// <summary>
         /// Set up all of the datagridview controls
         /// </summary>
-        private void GuestForm_Load()
+        private void RoomInfoForm_Load()
         {
             // common setup for datagridview controls
 

@@ -11,6 +11,7 @@ using VancouverHotelCodeFirstFromDB;
 using System.Data.Entity;
 using System.Diagnostics;
 using SeedDatabaseExtensions;
+using EFControllerUtilities;
 
 namespace ProjectTeam06Hotel
 {
@@ -24,7 +25,7 @@ namespace ProjectTeam06Hotel
             this.Text = "Guest Form";
             context = new VancouverHotelEntities();
             context.Database.Log = (s => Debug.Write(s));
-            context.SeedDatabase();
+           // context.SeedDatabase();
 
             this.Load += (s, e) => GuestForm_Load();
 
@@ -49,6 +50,8 @@ namespace ProjectTeam06Hotel
                     Email = txtBoxAddEmail.Text,
                     Phone = txtBoxAddCustomerPhone.Text
                 });
+
+
                 this.DialogResult = DialogResult.OK;
                 
                 /*dataGridViewCustomer.DataSource = context.Guests.ToList();
