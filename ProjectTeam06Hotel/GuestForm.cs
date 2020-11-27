@@ -67,7 +67,7 @@ namespace ProjectTeam06Hotel
 
             this.dataGridViewCustomer.Columns["Payments"].Visible = false;
             this.dataGridViewCustomer.Columns["Reservations"].Visible = false;
-            //dataGridViewCustomer.DataSource = context.Guests.ToList();
+            dataGridViewCustomer.DataSource = context.Guests.ToList();
 
         }
         private void InitializeDataGridView<T>(DataGridView gridView, params string[] navProperties) where T : class
