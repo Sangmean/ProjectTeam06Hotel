@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.labelTxtRoomInfo = new System.Windows.Forms.Label();
             this.dataGridViewRoom = new System.Windows.Forms.DataGridView();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
@@ -52,6 +53,7 @@
             this.labelTxtRoomInfo.AutoSize = true;
             this.labelTxtRoomInfo.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.labelTxtRoomInfo.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.labelTxtRoomInfo.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.labelTxtRoomInfo.Location = new System.Drawing.Point(108, 115);
             this.labelTxtRoomInfo.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labelTxtRoomInfo.Name = "labelTxtRoomInfo";
@@ -61,7 +63,18 @@
             // 
             // dataGridViewRoom
             // 
+            this.dataGridViewRoom.BackgroundColor = System.Drawing.SystemColors.ActiveBorder;
+            this.dataGridViewRoom.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.InactiveBorder;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewRoom.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridViewRoom.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewRoom.GridColor = System.Drawing.SystemColors.ActiveBorder;
             this.dataGridViewRoom.Location = new System.Drawing.Point(156, 405);
             this.dataGridViewRoom.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.dataGridViewRoom.Name = "dataGridViewRoom";
@@ -93,6 +106,8 @@
             // 
             // buttonRoomTypeDelete
             // 
+            this.buttonRoomTypeDelete.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonRoomTypeDelete.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.buttonRoomTypeDelete.Location = new System.Drawing.Point(575, 170);
             this.buttonRoomTypeDelete.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.buttonRoomTypeDelete.Name = "buttonRoomTypeDelete";
@@ -103,6 +118,8 @@
             // 
             // buttonRoomTypeUpdate
             // 
+            this.buttonRoomTypeUpdate.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonRoomTypeUpdate.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.buttonRoomTypeUpdate.Location = new System.Drawing.Point(330, 170);
             this.buttonRoomTypeUpdate.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.buttonRoomTypeUpdate.Name = "buttonRoomTypeUpdate";
@@ -134,6 +151,7 @@
             // labelCapacity
             // 
             this.labelCapacity.AutoSize = true;
+            this.labelCapacity.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.labelCapacity.Location = new System.Drawing.Point(404, 111);
             this.labelCapacity.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labelCapacity.Name = "labelCapacity";
@@ -144,6 +162,7 @@
             // labelStatus
             // 
             this.labelStatus.AutoSize = true;
+            this.labelStatus.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.labelStatus.Location = new System.Drawing.Point(404, 54);
             this.labelStatus.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labelStatus.Name = "labelStatus";
@@ -153,6 +172,8 @@
             // 
             // buttonRoomTypeAdd
             // 
+            this.buttonRoomTypeAdd.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonRoomTypeAdd.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.buttonRoomTypeAdd.Location = new System.Drawing.Point(92, 170);
             this.buttonRoomTypeAdd.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.buttonRoomTypeAdd.Name = "buttonRoomTypeAdd";
@@ -172,6 +193,7 @@
             // labelRoomPrice
             // 
             this.labelRoomPrice.AutoSize = true;
+            this.labelRoomPrice.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.labelRoomPrice.Location = new System.Drawing.Point(18, 117);
             this.labelRoomPrice.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labelRoomPrice.Name = "labelRoomPrice";
@@ -190,6 +212,7 @@
             // labelRoomName
             // 
             this.labelRoomName.AutoSize = true;
+            this.labelRoomName.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.labelRoomName.Location = new System.Drawing.Point(19, 51);
             this.labelRoomName.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labelRoomName.Name = "labelRoomName";
@@ -199,6 +222,8 @@
             // 
             // buttonBackupDatabase
             // 
+            this.buttonBackupDatabase.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonBackupDatabase.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.buttonBackupDatabase.Location = new System.Drawing.Point(880, 452);
             this.buttonBackupDatabase.Name = "buttonBackupDatabase";
             this.buttonBackupDatabase.Size = new System.Drawing.Size(133, 56);
@@ -210,11 +235,16 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.White;
+            this.CausesValidation = false;
             this.ClientSize = new System.Drawing.Size(1042, 675);
             this.Controls.Add(this.buttonBackupDatabase);
             this.Controls.Add(this.labelTxtRoomInfo);
             this.Controls.Add(this.dataGridViewRoom);
             this.Controls.Add(this.groupBox1);
+            this.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
+            this.KeyPreview = true;
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "RoomInfoForm";
             this.Text = "Room Info";
