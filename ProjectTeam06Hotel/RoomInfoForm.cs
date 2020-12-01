@@ -7,17 +7,25 @@ using System.Data.Entity;
 using System.Diagnostics;
 using EFControllerUtilities;
 using SeedDatabaseExtensions;
+using System.Data;
 
 namespace ProjectTeam06Hotel
 {
     public partial class RoomInfoForm : Form
     {
+
+        private DataSet hotelDataSet;
         private VancouverHotelEntities context;
         private int selectedRoomId;
         public RoomInfoForm()
         {
             InitializeComponent();
             this.Text = "Room Information Form";
+
+            hotelDataSet = new DataSet()
+            {
+                DataSetName = "VancouverHOtelDataSet",
+            };
 
             context = new VancouverHotelEntities();
             context.Database.Log = (s => Debug.Write(s));
@@ -27,8 +35,9 @@ namespace ProjectTeam06Hotel
             buttonRoomTypeAdd.Click += ButtonRoomTypeAdd_Click;
             buttonRoomTypeUpdate.Click += ButtonRoomTypeUpdate_Click;
             buttonRoomTypeDelete.Click += ButtonRoomTypeDelete_Click;
+            buttonBackupDatabase.Click += (s, e) => BackupDataSetToXML();
             dataGridViewRoom.SelectionChanged += DataGridViewRoom_SelectionChanged;
-            
+    
         }
 
         private void ButtonRoomTypeDelete_Click(object sender, EventArgs e)
@@ -157,5 +166,29 @@ namespace ProjectTeam06Hotel
             BindingList<T> list = dbSet.Local.ToBindingList<T>();
             return list;
         }
+
+        /// <summary>
+		/// Back up a DataSet to an XML file. 
+		/// 
+		/// File is named using the 
+		/// <see cref="DataSet.DataSetName"/> with .xml appended
+		/// </summary>
+		/// <param name="dataSet">DataSet to be backked up</param>
+		/// <param name="fileName">Name of the xml file (should have .xml extension)</param>
+		public void BackupDataSetToXML()
+        {
+            if (hotelDataSet == null)
+            {
+                Debug.WriteLine("BackupDataSetToXML: Error - null dataset");
+                return;
+            }
+
+            // writes the DataSet to an xml file including the schema
+
+            Debug.WriteLine("BackupDataSetToXML: backing up to " + hotelDataSet);
+
+            hotelDataSet.WriteXml(hotelDataSet.DataSetName + ".xml", XmlWriteMode.WriteSchema);
+        }
+
     }
 }

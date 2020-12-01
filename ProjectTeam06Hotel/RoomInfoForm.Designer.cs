@@ -31,6 +31,7 @@
             this.labelTxtRoomInfo = new System.Windows.Forms.Label();
             this.dataGridViewRoom = new System.Windows.Forms.DataGridView();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.buttonRoomTypeDelete = new System.Windows.Forms.Button();
             this.buttonRoomTypeUpdate = new System.Windows.Forms.Button();
             this.listBoxStatus = new System.Windows.Forms.ListBox();
             this.textBoxCapacity = new System.Windows.Forms.TextBox();
@@ -41,7 +42,7 @@
             this.labelRoomPrice = new System.Windows.Forms.Label();
             this.textBoxAddRoomType = new System.Windows.Forms.TextBox();
             this.labelRoomName = new System.Windows.Forms.Label();
-            this.buttonRoomTypeDelete = new System.Windows.Forms.Button();
+            this.buttonBackupDatabase = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewRoom)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -90,6 +91,16 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Room Information";
             // 
+            // buttonRoomTypeDelete
+            // 
+            this.buttonRoomTypeDelete.Location = new System.Drawing.Point(575, 170);
+            this.buttonRoomTypeDelete.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.buttonRoomTypeDelete.Name = "buttonRoomTypeDelete";
+            this.buttonRoomTypeDelete.Size = new System.Drawing.Size(112, 35);
+            this.buttonRoomTypeDelete.TabIndex = 11;
+            this.buttonRoomTypeDelete.Text = "Delete";
+            this.buttonRoomTypeDelete.UseVisualStyleBackColor = true;
+            // 
             // buttonRoomTypeUpdate
             // 
             this.buttonRoomTypeUpdate.Location = new System.Drawing.Point(330, 170);
@@ -97,7 +108,7 @@
             this.buttonRoomTypeUpdate.Name = "buttonRoomTypeUpdate";
             this.buttonRoomTypeUpdate.Size = new System.Drawing.Size(112, 35);
             this.buttonRoomTypeUpdate.TabIndex = 10;
-            this.buttonRoomTypeUpdate.Text = "UPDATE";
+            this.buttonRoomTypeUpdate.Text = "Update";
             this.buttonRoomTypeUpdate.UseVisualStyleBackColor = true;
             // 
             // listBoxStatus
@@ -147,7 +158,7 @@
             this.buttonRoomTypeAdd.Name = "buttonRoomTypeAdd";
             this.buttonRoomTypeAdd.Size = new System.Drawing.Size(112, 35);
             this.buttonRoomTypeAdd.TabIndex = 4;
-            this.buttonRoomTypeAdd.Text = "ADD";
+            this.buttonRoomTypeAdd.Text = "Add";
             this.buttonRoomTypeAdd.UseVisualStyleBackColor = true;
             // 
             // textBoxPricePerNight
@@ -186,21 +197,21 @@
             this.labelRoomName.TabIndex = 0;
             this.labelRoomName.Text = "Room Type";
             // 
-            // buttonRoomTypeDelete
+            // buttonBackupDatabase
             // 
-            this.buttonRoomTypeDelete.Location = new System.Drawing.Point(575, 170);
-            this.buttonRoomTypeDelete.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.buttonRoomTypeDelete.Name = "buttonRoomTypeDelete";
-            this.buttonRoomTypeDelete.Size = new System.Drawing.Size(112, 35);
-            this.buttonRoomTypeDelete.TabIndex = 11;
-            this.buttonRoomTypeDelete.Text = "DELETE";
-            this.buttonRoomTypeDelete.UseVisualStyleBackColor = true;
+            this.buttonBackupDatabase.Location = new System.Drawing.Point(880, 452);
+            this.buttonBackupDatabase.Name = "buttonBackupDatabase";
+            this.buttonBackupDatabase.Size = new System.Drawing.Size(133, 56);
+            this.buttonBackupDatabase.TabIndex = 12;
+            this.buttonBackupDatabase.Text = "Backup\r\nDatabase\r\n\r\n";
+            this.buttonBackupDatabase.UseVisualStyleBackColor = true;
             // 
             // RoomInfoForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1042, 675);
+            this.Controls.Add(this.buttonBackupDatabase);
             this.Controls.Add(this.labelTxtRoomInfo);
             this.Controls.Add(this.dataGridViewRoom);
             this.Controls.Add(this.groupBox1);
@@ -231,5 +242,6 @@
         private System.Windows.Forms.Button buttonRoomTypeUpdate;
         private System.Windows.Forms.ListBox listBoxStatus;
         private System.Windows.Forms.Button buttonRoomTypeDelete;
+        private System.Windows.Forms.Button buttonBackupDatabase;
     }
 }
