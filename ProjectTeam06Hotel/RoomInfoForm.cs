@@ -37,10 +37,16 @@ namespace ProjectTeam06Hotel
             buttonRoomTypeUpdate.Click += ButtonRoomTypeUpdate_Click;
             buttonRoomTypeDelete.Click += ButtonRoomTypeDelete_Click;
             buttonBackupDatabase.Click += (s, e) => BackupDataSetToXML();
+            buttonRoomAdd.Click += ButtonRoomAdd_Click;
 
             // register event handler for when a RoomType is selected
             dataGridViewRoom.SelectionChanged += DataGridViewRoom_SelectionChanged;
     
+        }
+
+        private void ButtonRoomAdd_Click(object sender, EventArgs e)
+        {
+            throw new NotImplementedException();
         }
 
         /// <summary>
@@ -150,6 +156,11 @@ namespace ProjectTeam06Hotel
                     Capacity = int.Parse(textBoxCapacity.Text)
                 };
 
+  /*              Room room = new Room()
+                {
+                    RoomTypeId = roomType.RoomTypeId
+                };
+*/
                 if (InfoIsInvalid(roomType))
                 {
                     MessageBox.Show("Room information is missing.");
@@ -167,6 +178,12 @@ namespace ProjectTeam06Hotel
                     MessageBox.Show("Cannot add Room information to database");
                     return;
                 }
+
+  /*              if (Controller<VancouverHotelEntities, Room>.AddEntity(room) == null)
+                {
+                    MessageBox.Show("Cannot add Room to database");
+                    return;
+                }*/
 
             }
 
@@ -188,7 +205,16 @@ namespace ProjectTeam06Hotel
         {
 
             InitializeDataGridView<RoomType>(dataGridViewRoom, "RoomType");
+            InitializeDataGridView<Room>(dataGridViewAddRoom, "Room");
+
+            this.dataGridViewAddRoom.Columns["Reservations"].Visible = false;
+           this.dataGridViewAddRoom.Columns["RoomType"].Visible = false;
+            this.dataGridViewAddRoom.Columns["RoomReservation"].Visible = false;
+            this.dataGridViewAddRoom.Columns["RoomTypes"].Visible = false;
+
+
             dataGridViewRoom.DataSource = context.RoomTypes.ToList();
+            dataGridViewAddRoom.DataSource = context.Rooms.ToList();
 
         }
 

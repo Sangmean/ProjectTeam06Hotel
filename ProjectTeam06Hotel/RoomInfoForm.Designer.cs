@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.labelTxtRoomInfo = new System.Windows.Forms.Label();
             this.dataGridViewRoom = new System.Windows.Forms.DataGridView();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
@@ -44,8 +44,11 @@
             this.textBoxAddRoomType = new System.Windows.Forms.TextBox();
             this.labelRoomName = new System.Windows.Forms.Label();
             this.buttonBackupDatabase = new System.Windows.Forms.Button();
+            this.dataGridViewAddRoom = new System.Windows.Forms.DataGridView();
+            this.buttonRoomAdd = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewRoom)).BeginInit();
             this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewAddRoom)).BeginInit();
             this.SuspendLayout();
             // 
             // labelTxtRoomInfo
@@ -65,14 +68,14 @@
             // 
             this.dataGridViewRoom.BackgroundColor = System.Drawing.SystemColors.ActiveBorder;
             this.dataGridViewRoom.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.InactiveBorder;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridViewRoom.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.InactiveBorder;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewRoom.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.dataGridViewRoom.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewRoom.GridColor = System.Drawing.SystemColors.ActiveBorder;
             this.dataGridViewRoom.Location = new System.Drawing.Point(156, 405);
@@ -231,13 +234,37 @@
             this.buttonBackupDatabase.Text = "Backup\r\nDatabase\r\n\r\n";
             this.buttonBackupDatabase.UseVisualStyleBackColor = true;
             // 
+            // dataGridViewAddRoom
+            // 
+            this.dataGridViewAddRoom.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewAddRoom.Location = new System.Drawing.Point(156, 685);
+            this.dataGridViewAddRoom.Name = "dataGridViewAddRoom";
+            this.dataGridViewAddRoom.RowHeadersWidth = 62;
+            this.dataGridViewAddRoom.RowTemplate.Height = 28;
+            this.dataGridViewAddRoom.Size = new System.Drawing.Size(857, 157);
+            this.dataGridViewAddRoom.TabIndex = 13;
+            // 
+            // buttonRoomAdd
+            // 
+            this.buttonRoomAdd.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonRoomAdd.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.buttonRoomAdd.Location = new System.Drawing.Point(156, 872);
+            this.buttonRoomAdd.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.buttonRoomAdd.Name = "buttonRoomAdd";
+            this.buttonRoomAdd.Size = new System.Drawing.Size(112, 35);
+            this.buttonRoomAdd.TabIndex = 12;
+            this.buttonRoomAdd.Text = "Add";
+            this.buttonRoomAdd.UseVisualStyleBackColor = true;
+            // 
             // RoomInfoForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.CausesValidation = false;
-            this.ClientSize = new System.Drawing.Size(1042, 675);
+            this.ClientSize = new System.Drawing.Size(1196, 1001);
+            this.Controls.Add(this.buttonRoomAdd);
+            this.Controls.Add(this.dataGridViewAddRoom);
             this.Controls.Add(this.buttonBackupDatabase);
             this.Controls.Add(this.labelTxtRoomInfo);
             this.Controls.Add(this.dataGridViewRoom);
@@ -251,6 +278,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewRoom)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewAddRoom)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -273,5 +301,7 @@
         private System.Windows.Forms.ListBox listBoxStatus;
         private System.Windows.Forms.Button buttonRoomTypeDelete;
         private System.Windows.Forms.Button buttonBackupDatabase;
+        private System.Windows.Forms.DataGridView dataGridViewAddRoom;
+        private System.Windows.Forms.Button buttonRoomAdd;
     }
 }

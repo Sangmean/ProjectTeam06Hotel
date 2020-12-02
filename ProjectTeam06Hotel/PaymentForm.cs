@@ -23,55 +23,72 @@ namespace ProjectTeam06Hotel
         {
             InitializeComponent();
 
-            
-
             this.Load += PaymentForm_Load;
 
-            // register event handler for when a guest is selected
+    /*        // register event handler for when a guest is selected
             listBoxReservedGuestName.SelectedIndexChanged += (s, e) => GetPayment();
             listBoxReservedGuestID.SelectedIndexChanged += (s, e) => GetPayment();
+            */
 
             // always dispose of the context when the form is closed.
             // this.FormClosed += (s, e) => context.Dispose();
 
             buttonPay.Click += ButtonPay_Click;
+
+            dataGridViewReservationInfo.SelectionChanged += DataGridViewReservationInfo_SelectionChanged;
+        }
+
+        private void DataGridViewReservationInfo_SelectionChanged(object sender, EventArgs e)
+        {
+
+            RoomType roomType = new RoomType();
+
+            foreach (DataGridViewRow row in dataGridViewReservationInfo.SelectedRows)
+                roomType = row.DataBoundItem as RoomType;
+
+/*        
+            if(reservation is null )
+            {
+                MessageBox.Show("Null");
+            }*/
+          
+
+
+            textBoxAmount.Text = "fddf";
         }
 
         //select guest and reservation id
         private void GetPayment()
         {
             {
-                if (!(listBoxReservedGuestID.SelectedItem is Payment pay))
-                    return;
-                textBoxGuestID.Text = pay.GuestId.ToString();
                 
-                textBoxReservationID.Text = pay.ReservationId.ToString();
+             /*   textBoxGuestID.Text = reservation.GuestId.ToString(); 
+                textBoxReservationID.Text = reservation.ReservationId.ToString();*/
             }
         }
 
         //pay room 
         private void ButtonPay_Click(object sender, EventArgs e)
         {
-            int reservationID = listBoxReservedGuestID.SelectedIndex + 1;
-            int guestID = listBoxReservedGuestName.SelectedIndex + 1;
+         
             // get the guest data from the textboxes
 
-            Payment pay = new Payment()
+         /*   Payment pay = new Payment()
             {
                 ReservationId = reservationID,
                 GuestId = guestID,
                 PaymentId = Convert.ToInt32(textBoxPaymentID.Text),
                 Amount = Convert.ToInt32(textBoxAmount.Text),
                 PaymentType = textBoxPayType.Text
-            };            
+            };            */
 
             // now update the db
 
-            if (Controller<VancouverHotelEntities, Payment>.AddEntity(pay) == null)
+           /* if (Controller<VancouverHotelEntities, Payment>.AddEntity(pay) == null)
             {
                 MessageBox.Show("Cannot add payment to database");
                 return;
-            }
+            }*/
             InitializeDataGridView<Payment>(dataGridViewPayments, "Payment");
 
             context = new VancouverHotelEntities();
@@ -94,13 +111,11 @@ namespace ProjectTeam06Hotel
             context.SaveChanges();
             // bind the listbox of guest and rooms
 
-            listBoxReservedGuestName.DataSource = context.Reservations.Local.ToBindingList();
-            listBoxReservedGuestID.DataSource = context.Guests.Local.ToBindingList();
+       
+            /*  listBoxReservedGuestName.DataSource = context.Reservations.Local.ToBindingList();
+              listBoxReservedGuestID.DataSource = context.Guests.Local.ToBindingList();*/
 
-            // no guest or room is selected to start
 
-            listBoxReservedGuestName.SelectedIndex = -1;
-            listBoxReservedGuestID.SelectedIndex = -1;
 
             // set all textboxes to blank
 
@@ -109,12 +124,11 @@ namespace ProjectTeam06Hotel
             textBoxPaymentID.ResetText();
             textBoxAmount.ResetText();
             textBoxPayType.ResetText();
-
-          
           
             InitializeDataGridView<Payment>(dataGridViewPayments, "Payment");
             this.dataGridViewPayments.Columns["Guest"].Visible = false;
             this.dataGridViewPayments.Columns["Reservation"].Visible = false;
+            UpDateReservation();
 
         }
 
@@ -159,7 +173,76 @@ namespace ProjectTeam06Hotel
             Debug.WriteLine("DataError " + typeof(T) + " " + gridView.Name + " row " + e.RowIndex + " col " + e.ColumnIndex + " Context: " + e.Context.ToString());
             e.Cancel = true;
         }
-    
+        private void UpDateReservation()
+        {
+            dataGridViewReservationInfo.Columns.Clear(); // any columns created by the designer, get rid of them
+            dataGridViewReservationInfo.ReadOnly = true;
+            dataGridViewReservationInfo.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+
+            DataGridViewColumn[] columns = new DataGridViewColumn[] {
+                new DataGridViewTextBoxColumn() { Name = "ReservationId", Width = 100},
+                new DataGridViewTextBoxColumn() { Name = "Guest Name", Width = 100},
+                new DataGridViewTextBoxColumn() { Name = "RoomId", Width = 100},
+                new DataGridViewTextBoxColumn() { Name = "Number Of Nights", Width = 100},
+                new DataGridViewTextBoxColumn() { Name = "Checkout Date", Width = 100},
+                new DataGridViewTextBoxColumn() { Name = "Status", Width = 100},
+            };
+
+       
+            dataGridViewReservationInfo.Columns.AddRange(columns);
+
+            Reservation reservation = new Reservation();
+            foreach(var r in context.Reservations)
+            {
+                dataGridViewReservationInfo.Rows.Add(new string[] {r.ReservationId.ToString(), r.Guest.GuestLastName, r.RoomId.ToString(),
+                r.NumberOfNight.ToString(), r.CheckOutDate, "Status" }); ;
+            }
+        }
+
+
+/*
+        List<RoomReservation> GetRoomReservations()
+        {
+            List<RoomReservation> reservationList = new List<RoomReservation>();
+
+            List<Reservation> reservations = Controller<VancouverHotelEntities, Reservation>
+                .GetEntitiesWithIncluded("Reservation").ToList();
+
+              
+                    RoomReservation booking = new RoomReservation()
+                    {
+                       ReservationId = .ToString(),
+                       GuestLastName = reservations.RoomId
+
+                    };
+
+                    reservationList.Add(booking);
+     
+
+            return reservationList.ToList();
+        }
+*/
+
+        private class RoomReservation
+        {
+            [DisplayName("ReservationId")]
+            public string ReservationId { get; set; }
+
+            [DisplayName("Guest Name")]
+            public int GuestLastName { get; set; }
+
+
+            public Guest guest { get; set; }
+
+            public Room room { get; set; }
+
+            public Reservation reservation { get; set; }
+
+
+
+        }
+
+
 
     }
 }

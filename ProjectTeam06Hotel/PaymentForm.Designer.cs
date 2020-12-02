@@ -42,11 +42,9 @@
             this.buttonPay = new System.Windows.Forms.Button();
             this.dataGridViewPayments = new System.Windows.Forms.DataGridView();
             this.labelAllPayments = new System.Windows.Forms.Label();
-            this.listBoxReservedGuestName = new System.Windows.Forms.ListBox();
-            this.listBoxReservedGuestID = new System.Windows.Forms.ListBox();
-            this.labelReservedGuestName = new System.Windows.Forms.Label();
-            this.labelReservedGuestID = new System.Windows.Forms.Label();
+            this.dataGridViewReservationInfo = new System.Windows.Forms.DataGridView();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewPayments)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewReservationInfo)).BeginInit();
             this.SuspendLayout();
             // 
             // labelPaymentID
@@ -95,7 +93,7 @@
             // labelPayType
             // 
             this.labelPayType.AutoSize = true;
-            this.labelPayType.Location = new System.Drawing.Point(763, 505);
+            this.labelPayType.Location = new System.Drawing.Point(688, 508);
             this.labelPayType.Name = "labelPayType";
             this.labelPayType.Size = new System.Drawing.Size(109, 20);
             this.labelPayType.TabIndex = 6;
@@ -135,7 +133,7 @@
             // 
             // textBoxPayType
             // 
-            this.textBoxPayType.Location = new System.Drawing.Point(976, 499);
+            this.textBoxPayType.Location = new System.Drawing.Point(827, 508);
             this.textBoxPayType.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.textBoxPayType.Name = "textBoxPayType";
             this.textBoxPayType.Size = new System.Drawing.Size(112, 26);
@@ -171,53 +169,22 @@
             this.labelAllPayments.TabIndex = 14;
             this.labelAllPayments.Text = "All Payments";
             // 
-            // listBoxReservedGuestName
+            // dataGridViewReservationInfo
             // 
-            this.listBoxReservedGuestName.FormattingEnabled = true;
-            this.listBoxReservedGuestName.ItemHeight = 20;
-            this.listBoxReservedGuestName.Location = new System.Drawing.Point(223, 89);
-            this.listBoxReservedGuestName.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.listBoxReservedGuestName.Name = "listBoxReservedGuestName";
-            this.listBoxReservedGuestName.Size = new System.Drawing.Size(235, 244);
-            this.listBoxReservedGuestName.TabIndex = 15;
-            // 
-            // listBoxReservedGuestID
-            // 
-            this.listBoxReservedGuestID.FormattingEnabled = true;
-            this.listBoxReservedGuestID.ItemHeight = 20;
-            this.listBoxReservedGuestID.Location = new System.Drawing.Point(605, 89);
-            this.listBoxReservedGuestID.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.listBoxReservedGuestID.Name = "listBoxReservedGuestID";
-            this.listBoxReservedGuestID.Size = new System.Drawing.Size(268, 244);
-            this.listBoxReservedGuestID.TabIndex = 16;
-            // 
-            // labelReservedGuestName
-            // 
-            this.labelReservedGuestName.AutoSize = true;
-            this.labelReservedGuestName.Location = new System.Drawing.Point(219, 34);
-            this.labelReservedGuestName.Name = "labelReservedGuestName";
-            this.labelReservedGuestName.Size = new System.Drawing.Size(174, 20);
-            this.labelReservedGuestName.TabIndex = 17;
-            this.labelReservedGuestName.Text = "Select Reserved Guest";
-            // 
-            // labelReservedGuestID
-            // 
-            this.labelReservedGuestID.AutoSize = true;
-            this.labelReservedGuestID.Location = new System.Drawing.Point(602, 34);
-            this.labelReservedGuestID.Name = "labelReservedGuestID";
-            this.labelReservedGuestID.Size = new System.Drawing.Size(164, 20);
-            this.labelReservedGuestID.TabIndex = 18;
-            this.labelReservedGuestID.Text = "Select Reservation ID";
+            this.dataGridViewReservationInfo.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewReservationInfo.Location = new System.Drawing.Point(153, 81);
+            this.dataGridViewReservationInfo.Name = "dataGridViewReservationInfo";
+            this.dataGridViewReservationInfo.RowHeadersWidth = 62;
+            this.dataGridViewReservationInfo.RowTemplate.Height = 28;
+            this.dataGridViewReservationInfo.Size = new System.Drawing.Size(812, 236);
+            this.dataGridViewReservationInfo.TabIndex = 15;
             // 
             // PaymentForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1120, 1000);
-            this.Controls.Add(this.labelReservedGuestID);
-            this.Controls.Add(this.labelReservedGuestName);
-            this.Controls.Add(this.listBoxReservedGuestID);
-            this.Controls.Add(this.listBoxReservedGuestName);
+            this.Controls.Add(this.dataGridViewReservationInfo);
             this.Controls.Add(this.labelAllPayments);
             this.Controls.Add(this.dataGridViewPayments);
             this.Controls.Add(this.buttonPay);
@@ -236,6 +203,7 @@
             this.Name = "PaymentForm";
             this.Text = "Payment";
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewPayments)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewReservationInfo)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -257,9 +225,6 @@
         private System.Windows.Forms.Button buttonPay;
         private System.Windows.Forms.DataGridView dataGridViewPayments;
         private System.Windows.Forms.Label labelAllPayments;
-        private System.Windows.Forms.ListBox listBoxReservedGuestName;
-        private System.Windows.Forms.ListBox listBoxReservedGuestID;
-        private System.Windows.Forms.Label labelReservedGuestName;
-        private System.Windows.Forms.Label labelReservedGuestID;
+        private System.Windows.Forms.DataGridView dataGridViewReservationInfo;
     }
 }
