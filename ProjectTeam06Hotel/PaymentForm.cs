@@ -41,20 +41,18 @@ namespace ProjectTeam06Hotel
         private void DataGridViewReservationInfo_SelectionChanged(object sender, EventArgs e)
         {
 
-            RoomType roomType = new RoomType();
-
+           Reservation reservation = new Reservation();
+            int reservationId = 0;
+/*
             foreach (DataGridViewRow row in dataGridViewReservationInfo.SelectedRows)
-                roomType = row.DataBoundItem as RoomType;
-
-/*        
-            if(reservation is null )
             {
-                MessageBox.Show("Null");
-            }*/
-          
+                reservationId = (int)row.Cells[0].Value;
+                
+            }
 
+            reservation = context.Reservations.Find(reservationId);
 
-            textBoxAmount.Text = "fddf";
+            textBoxAmount.Text = reservation.ReservationId.ToString();*/
         }
 
         //select guest and reservation id

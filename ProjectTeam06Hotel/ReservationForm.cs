@@ -49,10 +49,9 @@ namespace ProjectTeam06Hotel
         private void buttonCancelBooking_Click(object sender, EventArgs e)
         {
             foreach (DataGridViewRow row in dataGridViewReservations.SelectedRows)
-            {
+            {         
                 Reservation reservation = row.DataBoundItem as Reservation;
-                context.Reservations.Attach(reservation);
-                context.Reservations.Remove(reservation);
+                context.Reservations.Remove(context.Reservations.Find(reservation.ReservationId));
             }
             context.SaveChanges();
             ReservationForm_Load();

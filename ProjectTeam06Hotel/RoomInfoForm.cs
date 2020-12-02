@@ -28,25 +28,59 @@ namespace ProjectTeam06Hotel
             };
 
             context = new VancouverHotelEntities();
-            context.Database.Log = (s => Debug.Write(s));
-           // context.SeedDatabase();
+            //context.Database.Log = (s => Debug.Write(s));
+           //context.SeedDatabase();
 
             // register the event handlers
             this.Load += (s, e) => RoomInfoForm_Load();
             buttonRoomTypeAdd.Click += ButtonRoomTypeAdd_Click;
             buttonRoomTypeUpdate.Click += ButtonRoomTypeUpdate_Click;
             buttonRoomTypeDelete.Click += ButtonRoomTypeDelete_Click;
+
             buttonBackupDatabase.Click += (s, e) => BackupDataSetToXML();
             buttonRoomAdd.Click += ButtonRoomAdd_Click;
+            buttonRoomDelete.Click += ButtonRoomDelete_Click;
 
             // register event handler for when a RoomType is selected
             dataGridViewRoom.SelectionChanged += DataGridViewRoom_SelectionChanged;
     
         }
 
+        private void ButtonRoomDelete_Click(object sender, EventArgs e)
+        {
+            foreach (DataGridViewRow row in dataGridViewAddRoom.SelectedRows)
+            {
+                Room room = row.DataBoundItem as Room;
+                context.Rooms.Remove(room);
+            }
+
+            context.SaveChanges();
+            RoomInfoForm_Load();
+        }
+
         private void ButtonRoomAdd_Click(object sender, EventArgs e)
         {
-            throw new NotImplementedException();
+            RoomType roomType = new RoomType();
+
+            foreach (DataGridViewRow row in dataGridViewRoom.SelectedRows)
+                roomType = row.DataBoundItem as RoomType;
+
+            Room room = new Room
+            {
+                RoomTypeId = roomType.RoomTypeId
+            };
+
+
+            if (Controller<VancouverHotelEntities, Room>.AddEntity(room) == null)
+            {
+                MessageBox.Show("Cannot add Room to database");
+                return;
+            }
+
+
+            RoomInfoForm_Load();
+            context.SaveChanges();
+
         }
 
         /// <summary>
@@ -156,11 +190,6 @@ namespace ProjectTeam06Hotel
                     Capacity = int.Parse(textBoxCapacity.Text)
                 };
 
-  /*              Room room = new Room()
-                {
-                    RoomTypeId = roomType.RoomTypeId
-                };
-*/
                 if (InfoIsInvalid(roomType))
                 {
                     MessageBox.Show("Room information is missing.");
@@ -179,11 +208,6 @@ namespace ProjectTeam06Hotel
                     return;
                 }
 
-  /*              if (Controller<VancouverHotelEntities, Room>.AddEntity(room) == null)
-                {
-                    MessageBox.Show("Cannot add Room to database");
-                    return;
-                }*/
 
             }
 
@@ -208,7 +232,7 @@ namespace ProjectTeam06Hotel
             InitializeDataGridView<Room>(dataGridViewAddRoom, "Room");
 
             this.dataGridViewAddRoom.Columns["Reservations"].Visible = false;
-           this.dataGridViewAddRoom.Columns["RoomType"].Visible = false;
+            this.dataGridViewAddRoom.Columns["RoomType"].Visible = false;
             this.dataGridViewAddRoom.Columns["RoomReservation"].Visible = false;
             this.dataGridViewAddRoom.Columns["RoomTypes"].Visible = false;
 

@@ -18,20 +18,17 @@ namespace VancouverHotelCodeFirstFromDB
 		}
    }
 
-  partial class RoomType
-  {
-        /// <summary>
-        /// For debugging
-        /// </summary>
-        /// <returns></returns>
+    partial class Room
+    {
         public override string ToString()
         {
             VancouverHotelEntities context = new VancouverHotelEntities();
 
             RoomType roomType = context.RoomTypes.Find(RoomTypeId);
-            return RoomTypeId + ": " + roomType.RoomTypeName + " " + roomType.Status;
+            return RoomId + ": " + roomType.RoomTypeName + " " + roomType.Status;
         }
     }
+
 	partial class Reservation
     { 
 
