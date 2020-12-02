@@ -36,6 +36,8 @@ namespace ProjectTeam06Hotel
             listBoxGuestName.SelectedIndexChanged += (s, e) => GetReservation();
             listBoxRoomType.SelectedIndexChanged += (s, e) => GetReservation();
 
+            dataGridViewReservations.SelectionChanged += DataGridViewReservation_SelectionChanged;
+
             // always dispose of the context when the form is closed.
             // this.FormClosed += (s, e) => context.Dispose();
 
@@ -61,12 +63,28 @@ namespace ProjectTeam06Hotel
             textBoxRoomID.ResetText();
 
             InitializeDataGridView<Reservation>(dataGridViewReservations, "Reservations");
+            this.dataGridViewReservations.Columns["Guest"].Visible = false;
+            this.dataGridViewReservations.Columns["Payments"].Visible = false;
+            this.dataGridViewReservations.Columns["Room"].Visible = false;
+            this.dataGridViewReservations.Columns["RoomReservations"].Visible = false;
 
             context = new VancouverHotelEntities();
             context.Database.Log = (s => Debug.Write(s));
             context.Payments.Load();
             context.SaveChanges();
         }
+
+        private void DataGridViewReservation_SelectionChanged(object sender, EventArgs e)
+        {
+            Reservation reservation = new Reservation();
+
+            foreach (DataGridViewRow row in dataGridViewReservations.SelectedRows)
+                reservation = row.DataBoundItem as Reservation;
+
+            textBoxNumberOfGuests.Text = reservation.NumberOfGuest.ToString();
+       
+        }
+
 
         //select guest and room
         private void GetReservation()
@@ -97,13 +115,13 @@ namespace ProjectTeam06Hotel
 
             Reservation reservation = new Reservation();
 
-            reservation.ReservationId = Convert.ToInt32(textBoxResevationID.Text);
+            //reservation.ReservationId = Convert.ToInt32(textBoxResevationID.Text);
             reservation.GuestId = Convert.ToInt32(textBoxGuestID.Text);
             reservation.RoomId = Convert.ToInt32(textBoxRoomID.Text);
-            reservation.ReservationDate = DateTime.Parse(textBoxReservationDate.Text);
+            reservation.ReservationDate = textBoxReservationDate.Text;
             reservation.NumberOfGuest = Convert.ToInt32(textBoxNumberOfGuests.Text);
-            reservation.CheckInDate = DateTime.Parse(textBoxCheckinDate.Text);
-            reservation.CheckOutDate = DateTime.Parse(textBoxCheckoutDate.Text);
+            reservation.CheckInDate = textBoxCheckinDate.Text;
+            reservation.CheckOutDate =textBoxCheckoutDate.Text;
 
             // now update the db
 

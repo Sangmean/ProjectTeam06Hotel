@@ -12,7 +12,7 @@ namespace VancouverHotelCodeFirstFromDB
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public RoomType()
         {
-           // Rooms = new HashSet<Room>();
+            //Rooms = new HashSet<Room>();
         }
 
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]

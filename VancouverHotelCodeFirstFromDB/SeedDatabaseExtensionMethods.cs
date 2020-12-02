@@ -79,8 +79,8 @@ namespace SeedDatabaseExtensions
 
             List<Reservation> reservationList = new List<Reservation>()
             {
-                new Reservation{GuestId = 1, RoomId = 1 }, //ReservationDate = "2010-01-01", CheckInDate = "2010-01-02",CheckOutDate = "2010-01-03", NumberOfGuest = 1},
-			    new Reservation{GuestId = 2, RoomId = 2, } //ReservationDate = "2020-01-01", CheckInDate = "2020-01-02", CheckOutDate = "2020-01-03", NumberOfGuest = 2}
+                new Reservation{GuestId = 1, RoomId = 1, ReservationDate = "2010-01-01" , CheckInDate = "2010-01-02",CheckOutDate = "2010-01-03", NumberOfGuest = 1, NumberOfNight = 1},
+			    new Reservation{GuestId = 2, RoomId = 2, ReservationDate = "2020-01-01", CheckInDate = "2020-01-02", CheckOutDate = "2020-01-03", NumberOfGuest = 2, NumberOfNight = 3}
 
 			};
 

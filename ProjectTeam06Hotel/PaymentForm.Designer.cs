@@ -52,9 +52,9 @@
             // labelPaymentID
             // 
             this.labelPaymentID.AutoSize = true;
-            this.labelPaymentID.Location = new System.Drawing.Point(28, 414);
+            this.labelPaymentID.Location = new System.Drawing.Point(32, 518);
             this.labelPaymentID.Name = "labelPaymentID";
-            this.labelPaymentID.Size = new System.Drawing.Size(80, 17);
+            this.labelPaymentID.Size = new System.Drawing.Size(92, 20);
             this.labelPaymentID.TabIndex = 0;
             this.labelPaymentID.Text = "Payment ID";
             // 
@@ -62,85 +62,91 @@
             // 
             this.label2.Location = new System.Drawing.Point(0, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(100, 23);
+            this.label2.Size = new System.Drawing.Size(112, 29);
             this.label2.TabIndex = 5;
             // 
             // labelReservationID
             // 
             this.labelReservationID.AutoSize = true;
-            this.labelReservationID.Location = new System.Drawing.Point(535, 317);
+            this.labelReservationID.Location = new System.Drawing.Point(602, 396);
             this.labelReservationID.Name = "labelReservationID";
-            this.labelReservationID.Size = new System.Drawing.Size(101, 17);
+            this.labelReservationID.Size = new System.Drawing.Size(115, 20);
             this.labelReservationID.TabIndex = 2;
             this.labelReservationID.Text = "Reservation ID";
             // 
             // labelGuestID
             // 
             this.labelGuestID.AutoSize = true;
-            this.labelGuestID.Location = new System.Drawing.Point(195, 322);
+            this.labelGuestID.Location = new System.Drawing.Point(219, 402);
             this.labelGuestID.Name = "labelGuestID";
-            this.labelGuestID.Size = new System.Drawing.Size(63, 17);
+            this.labelGuestID.Size = new System.Drawing.Size(74, 20);
             this.labelGuestID.TabIndex = 3;
             this.labelGuestID.Text = "Guest ID";
             // 
             // labelAmount
             // 
             this.labelAmount.AutoSize = true;
-            this.labelAmount.Location = new System.Drawing.Point(326, 409);
+            this.labelAmount.Location = new System.Drawing.Point(367, 511);
             this.labelAmount.Name = "labelAmount";
-            this.labelAmount.Size = new System.Drawing.Size(56, 17);
+            this.labelAmount.Size = new System.Drawing.Size(65, 20);
             this.labelAmount.TabIndex = 4;
             this.labelAmount.Text = "Amount";
             // 
             // labelPayType
             // 
             this.labelPayType.AutoSize = true;
-            this.labelPayType.Location = new System.Drawing.Point(678, 404);
+            this.labelPayType.Location = new System.Drawing.Point(763, 505);
             this.labelPayType.Name = "labelPayType";
-            this.labelPayType.Size = new System.Drawing.Size(99, 17);
+            this.labelPayType.Size = new System.Drawing.Size(109, 20);
             this.labelPayType.TabIndex = 6;
             this.labelPayType.Text = "Payment Type";
             // 
             // textBoxPaymentID
             // 
-            this.textBoxPaymentID.Location = new System.Drawing.Point(158, 409);
+            this.textBoxPaymentID.Location = new System.Drawing.Point(178, 511);
+            this.textBoxPaymentID.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.textBoxPaymentID.Name = "textBoxPaymentID";
-            this.textBoxPaymentID.Size = new System.Drawing.Size(100, 22);
+            this.textBoxPaymentID.Size = new System.Drawing.Size(112, 26);
             this.textBoxPaymentID.TabIndex = 7;
             // 
             // textBoxReservationID
             // 
-            this.textBoxReservationID.Location = new System.Drawing.Point(677, 312);
+            this.textBoxReservationID.Location = new System.Drawing.Point(762, 390);
+            this.textBoxReservationID.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.textBoxReservationID.Name = "textBoxReservationID";
-            this.textBoxReservationID.Size = new System.Drawing.Size(100, 22);
+            this.textBoxReservationID.Size = new System.Drawing.Size(112, 26);
             this.textBoxReservationID.TabIndex = 8;
             // 
             // textBoxGuestID
             // 
-            this.textBoxGuestID.Location = new System.Drawing.Point(307, 317);
+            this.textBoxGuestID.Location = new System.Drawing.Point(345, 396);
+            this.textBoxGuestID.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.textBoxGuestID.Name = "textBoxGuestID";
-            this.textBoxGuestID.Size = new System.Drawing.Size(100, 22);
+            this.textBoxGuestID.Size = new System.Drawing.Size(112, 26);
             this.textBoxGuestID.TabIndex = 9;
             // 
             // textBoxAmount
             // 
-            this.textBoxAmount.Location = new System.Drawing.Point(435, 404);
+            this.textBoxAmount.Location = new System.Drawing.Point(489, 505);
+            this.textBoxAmount.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.textBoxAmount.Name = "textBoxAmount";
-            this.textBoxAmount.Size = new System.Drawing.Size(100, 22);
+            this.textBoxAmount.Size = new System.Drawing.Size(112, 26);
             this.textBoxAmount.TabIndex = 10;
             // 
             // textBoxPayType
             // 
-            this.textBoxPayType.Location = new System.Drawing.Point(868, 399);
+            this.textBoxPayType.Location = new System.Drawing.Point(976, 499);
+            this.textBoxPayType.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.textBoxPayType.Name = "textBoxPayType";
-            this.textBoxPayType.Size = new System.Drawing.Size(100, 22);
+            this.textBoxPayType.Size = new System.Drawing.Size(112, 26);
             this.textBoxPayType.TabIndex = 11;
             // 
             // buttonPay
             // 
-            this.buttonPay.Location = new System.Drawing.Point(447, 450);
+            this.buttonPay.Location = new System.Drawing.Point(503, 562);
+            this.buttonPay.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.buttonPay.Name = "buttonPay";
-            this.buttonPay.Size = new System.Drawing.Size(77, 29);
+            this.buttonPay.Size = new System.Drawing.Size(87, 36);
             this.buttonPay.TabIndex = 12;
             this.buttonPay.Text = "Pay";
             this.buttonPay.UseVisualStyleBackColor = true;
@@ -148,63 +154,66 @@
             // dataGridViewPayments
             // 
             this.dataGridViewPayments.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridViewPayments.Location = new System.Drawing.Point(31, 567);
+            this.dataGridViewPayments.Location = new System.Drawing.Point(35, 709);
+            this.dataGridViewPayments.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.dataGridViewPayments.Name = "dataGridViewPayments";
             this.dataGridViewPayments.RowHeadersWidth = 51;
             this.dataGridViewPayments.RowTemplate.Height = 24;
-            this.dataGridViewPayments.Size = new System.Drawing.Size(937, 203);
+            this.dataGridViewPayments.Size = new System.Drawing.Size(1054, 254);
             this.dataGridViewPayments.TabIndex = 13;
             // 
             // labelAllPayments
             // 
             this.labelAllPayments.AutoSize = true;
-            this.labelAllPayments.Location = new System.Drawing.Point(34, 532);
+            this.labelAllPayments.Location = new System.Drawing.Point(38, 665);
             this.labelAllPayments.Name = "labelAllPayments";
-            this.labelAllPayments.Size = new System.Drawing.Size(89, 17);
+            this.labelAllPayments.Size = new System.Drawing.Size(100, 20);
             this.labelAllPayments.TabIndex = 14;
             this.labelAllPayments.Text = "All Payments";
             // 
             // listBoxReservedGuestName
             // 
             this.listBoxReservedGuestName.FormattingEnabled = true;
-            this.listBoxReservedGuestName.ItemHeight = 16;
-            this.listBoxReservedGuestName.Location = new System.Drawing.Point(198, 71);
+            this.listBoxReservedGuestName.ItemHeight = 20;
+            this.listBoxReservedGuestName.Location = new System.Drawing.Point(223, 89);
+            this.listBoxReservedGuestName.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.listBoxReservedGuestName.Name = "listBoxReservedGuestName";
-            this.listBoxReservedGuestName.Size = new System.Drawing.Size(209, 196);
+            this.listBoxReservedGuestName.Size = new System.Drawing.Size(235, 244);
             this.listBoxReservedGuestName.TabIndex = 15;
             // 
             // listBoxReservedGuestID
             // 
             this.listBoxReservedGuestID.FormattingEnabled = true;
-            this.listBoxReservedGuestID.ItemHeight = 16;
-            this.listBoxReservedGuestID.Location = new System.Drawing.Point(538, 71);
+            this.listBoxReservedGuestID.ItemHeight = 20;
+            this.listBoxReservedGuestID.Location = new System.Drawing.Point(605, 89);
+            this.listBoxReservedGuestID.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.listBoxReservedGuestID.Name = "listBoxReservedGuestID";
-            this.listBoxReservedGuestID.Size = new System.Drawing.Size(239, 196);
+            this.listBoxReservedGuestID.Size = new System.Drawing.Size(268, 244);
             this.listBoxReservedGuestID.TabIndex = 16;
             // 
             // labelReservedGuestName
             // 
             this.labelReservedGuestName.AutoSize = true;
-            this.labelReservedGuestName.Location = new System.Drawing.Point(195, 27);
+            this.labelReservedGuestName.Location = new System.Drawing.Point(219, 34);
             this.labelReservedGuestName.Name = "labelReservedGuestName";
-            this.labelReservedGuestName.Size = new System.Drawing.Size(154, 17);
+            this.labelReservedGuestName.Size = new System.Drawing.Size(174, 20);
             this.labelReservedGuestName.TabIndex = 17;
             this.labelReservedGuestName.Text = "Select Reserved Guest";
             // 
             // labelReservedGuestID
             // 
             this.labelReservedGuestID.AutoSize = true;
-            this.labelReservedGuestID.Location = new System.Drawing.Point(535, 27);
+            this.labelReservedGuestID.Location = new System.Drawing.Point(602, 34);
             this.labelReservedGuestID.Name = "labelReservedGuestID";
-            this.labelReservedGuestID.Size = new System.Drawing.Size(144, 17);
+            this.labelReservedGuestID.Size = new System.Drawing.Size(164, 20);
             this.labelReservedGuestID.TabIndex = 18;
             this.labelReservedGuestID.Text = "Select Reservation ID";
             // 
             // PaymentForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(996, 800);
+            this.ClientSize = new System.Drawing.Size(1120, 1000);
             this.Controls.Add(this.labelReservedGuestID);
             this.Controls.Add(this.labelReservedGuestName);
             this.Controls.Add(this.listBoxReservedGuestID);
@@ -223,6 +232,7 @@
             this.Controls.Add(this.labelReservationID);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.labelPaymentID);
+            this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "PaymentForm";
             this.Text = "Payment";
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewPayments)).EndInit();

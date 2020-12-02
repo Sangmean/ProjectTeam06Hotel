@@ -23,16 +23,17 @@ namespace VancouverHotelCodeFirstFromDB
 
         public int? RoomId { get; set; }
 
-        [Column(TypeName = "date")]
-        public DateTime? ReservationDate { get; set; }
+        public String ReservationDate { get; set; }
 
-        [Column(TypeName = "date")]
-        public DateTime? CheckInDate { get; set; }
+       // [Column(TypeName = "date")]
+        public String CheckInDate { get; set; }
 
-        [Column(TypeName = "date")]
-        public DateTime? CheckOutDate { get; set; }
+       // [Column(TypeName = "date")]
+        public String CheckOutDate { get; set; }
 
         public int? NumberOfGuest { get; set; }
+
+        public int NumberOfNight { get; set; }
 
         public virtual Guest Guest { get; set; }
 

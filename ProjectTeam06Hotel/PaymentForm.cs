@@ -110,7 +110,11 @@ namespace ProjectTeam06Hotel
             textBoxAmount.ResetText();
             textBoxPayType.ResetText();
 
+          
+          
             InitializeDataGridView<Payment>(dataGridViewPayments, "Payment");
+            this.dataGridViewPayments.Columns["Guest"].Visible = false;
+            this.dataGridViewPayments.Columns["Reservation"].Visible = false;
 
         }
 
