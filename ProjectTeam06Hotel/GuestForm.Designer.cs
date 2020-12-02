@@ -30,6 +30,8 @@
         {
             this.dataGridViewCustomer = new System.Windows.Forms.DataGridView();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.txtBoxUpdateLastName = new System.Windows.Forms.TextBox();
+            this.label11 = new System.Windows.Forms.Label();
             this.txtBoxUpdateEmail = new System.Windows.Forms.TextBox();
             this.txtBoxUpdateCountry = new System.Windows.Forms.TextBox();
             this.txtBoxUpdatePostCode = new System.Windows.Forms.TextBox();
@@ -50,8 +52,8 @@
             this.btnDeleteCustomer = new System.Windows.Forms.Button();
             this.labelTxtCustomerInfo = new System.Windows.Forms.Label();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.txtBoxAddID = new System.Windows.Forms.TextBox();
-            this.label9 = new System.Windows.Forms.Label();
+            this.txtBoxAddLastName = new System.Windows.Forms.TextBox();
+            this.label10 = new System.Windows.Forms.Label();
             this.txtBoxAddEmail = new System.Windows.Forms.TextBox();
             this.txtBoxAddCountry = new System.Windows.Forms.TextBox();
             this.txtBoxAddPostCode = new System.Windows.Forms.TextBox();
@@ -67,10 +69,6 @@
             this.labelCustomerAddress = new System.Windows.Forms.Label();
             this.txtBoxAddFirstName = new System.Windows.Forms.TextBox();
             this.labelCustomerName = new System.Windows.Forms.Label();
-            this.txtBoxAddLastName = new System.Windows.Forms.TextBox();
-            this.label10 = new System.Windows.Forms.Label();
-            this.txtBoxUpdateLastName = new System.Windows.Forms.TextBox();
-            this.label11 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewCustomer)).BeginInit();
             this.groupBox4.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -79,9 +77,9 @@
             // dataGridViewCustomer
             // 
             this.dataGridViewCustomer.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridViewCustomer.Location = new System.Drawing.Point(12, 496);
+            this.dataGridViewCustomer.Location = new System.Drawing.Point(34, 496);
             this.dataGridViewCustomer.Name = "dataGridViewCustomer";
-            this.dataGridViewCustomer.Size = new System.Drawing.Size(652, 163);
+            this.dataGridViewCustomer.Size = new System.Drawing.Size(772, 163);
             this.dataGridViewCustomer.TabIndex = 11;
             // 
             // groupBox4
@@ -105,12 +103,28 @@
             this.groupBox4.Controls.Add(this.labelUpdateCustomerAddress);
             this.groupBox4.Controls.Add(this.txtBoxUpdateFirstName);
             this.groupBox4.Controls.Add(this.labelUpdateCustomerName);
-            this.groupBox4.Location = new System.Drawing.Point(359, 57);
+            this.groupBox4.Location = new System.Drawing.Point(482, 57);
             this.groupBox4.Name = "groupBox4";
             this.groupBox4.Size = new System.Drawing.Size(247, 421);
             this.groupBox4.TabIndex = 10;
             this.groupBox4.TabStop = false;
-            this.groupBox4.Text = "Update Customer Info";
+            this.groupBox4.Text = "Update Guest Info";
+            // 
+            // txtBoxUpdateLastName
+            // 
+            this.txtBoxUpdateLastName.Location = new System.Drawing.Point(82, 95);
+            this.txtBoxUpdateLastName.Name = "txtBoxUpdateLastName";
+            this.txtBoxUpdateLastName.Size = new System.Drawing.Size(127, 20);
+            this.txtBoxUpdateLastName.TabIndex = 26;
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(15, 98);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(58, 13);
+            this.label11.TabIndex = 25;
+            this.label11.Text = "Last Name";
             // 
             // txtBoxUpdateEmail
             // 
@@ -215,7 +229,7 @@
             this.btnUpdateCustomer.Name = "btnUpdateCustomer";
             this.btnUpdateCustomer.Size = new System.Drawing.Size(112, 23);
             this.btnUpdateCustomer.TabIndex = 4;
-            this.btnUpdateCustomer.Text = "Update Customer";
+            this.btnUpdateCustomer.Text = "Update Guest";
             this.btnUpdateCustomer.UseVisualStyleBackColor = true;
             // 
             // txtBoxUpdateCustomerAddress
@@ -253,11 +267,11 @@
             // 
             // btnDeleteCustomer
             // 
-            this.btnDeleteCustomer.Location = new System.Drawing.Point(324, 665);
+            this.btnDeleteCustomer.Location = new System.Drawing.Point(370, 665);
             this.btnDeleteCustomer.Name = "btnDeleteCustomer";
-            this.btnDeleteCustomer.Size = new System.Drawing.Size(75, 46);
+            this.btnDeleteCustomer.Size = new System.Drawing.Size(128, 28);
             this.btnDeleteCustomer.TabIndex = 10;
-            this.btnDeleteCustomer.Text = "Delete Customer";
+            this.btnDeleteCustomer.Text = "Delete Guest";
             this.btnDeleteCustomer.UseVisualStyleBackColor = true;
             // 
             // labelTxtCustomerInfo
@@ -265,18 +279,16 @@
             this.labelTxtCustomerInfo.AutoSize = true;
             this.labelTxtCustomerInfo.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.labelTxtCustomerInfo.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.labelTxtCustomerInfo.Location = new System.Drawing.Point(106, 27);
+            this.labelTxtCustomerInfo.Location = new System.Drawing.Point(370, 22);
             this.labelTxtCustomerInfo.Name = "labelTxtCustomerInfo";
-            this.labelTxtCustomerInfo.Size = new System.Drawing.Size(128, 15);
+            this.labelTxtCustomerInfo.Size = new System.Drawing.Size(109, 15);
             this.labelTxtCustomerInfo.TabIndex = 9;
-            this.labelTxtCustomerInfo.Text = "Customer Information";
+            this.labelTxtCustomerInfo.Text = "Guest Information";
             // 
             // groupBox3
             // 
             this.groupBox3.Controls.Add(this.txtBoxAddLastName);
             this.groupBox3.Controls.Add(this.label10);
-            this.groupBox3.Controls.Add(this.txtBoxAddID);
-            this.groupBox3.Controls.Add(this.label9);
             this.groupBox3.Controls.Add(this.txtBoxAddEmail);
             this.groupBox3.Controls.Add(this.txtBoxAddCountry);
             this.groupBox3.Controls.Add(this.txtBoxAddPostCode);
@@ -292,46 +304,46 @@
             this.groupBox3.Controls.Add(this.labelCustomerAddress);
             this.groupBox3.Controls.Add(this.txtBoxAddFirstName);
             this.groupBox3.Controls.Add(this.labelCustomerName);
-            this.groupBox3.Location = new System.Drawing.Point(106, 57);
+            this.groupBox3.Location = new System.Drawing.Point(132, 57);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(247, 421);
             this.groupBox3.TabIndex = 8;
             this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "Add Customer Info";
+            this.groupBox3.Text = "Add Guest Info";
             // 
-            // txtBoxAddID
+            // txtBoxAddLastName
             // 
-            this.txtBoxAddID.Location = new System.Drawing.Point(84, 30);
-            this.txtBoxAddID.Name = "txtBoxAddID";
-            this.txtBoxAddID.Size = new System.Drawing.Size(127, 20);
-            this.txtBoxAddID.TabIndex = 18;
+            this.txtBoxAddLastName.Location = new System.Drawing.Point(84, 76);
+            this.txtBoxAddLastName.Name = "txtBoxAddLastName";
+            this.txtBoxAddLastName.Size = new System.Drawing.Size(127, 20);
+            this.txtBoxAddLastName.TabIndex = 20;
             // 
-            // label9
+            // label10
             // 
-            this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(25, 33);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(16, 13);
-            this.label9.TabIndex = 17;
-            this.label9.Text = "Id";
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(17, 79);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(58, 13);
+            this.label10.TabIndex = 19;
+            this.label10.Text = "Last Name";
             // 
             // txtBoxAddEmail
             // 
-            this.txtBoxAddEmail.Location = new System.Drawing.Point(84, 307);
+            this.txtBoxAddEmail.Location = new System.Drawing.Point(84, 285);
             this.txtBoxAddEmail.Name = "txtBoxAddEmail";
             this.txtBoxAddEmail.Size = new System.Drawing.Size(127, 20);
             this.txtBoxAddEmail.TabIndex = 16;
             // 
             // txtBoxAddCountry
             // 
-            this.txtBoxAddCountry.Location = new System.Drawing.Point(84, 274);
+            this.txtBoxAddCountry.Location = new System.Drawing.Point(84, 252);
             this.txtBoxAddCountry.Name = "txtBoxAddCountry";
             this.txtBoxAddCountry.Size = new System.Drawing.Size(127, 20);
             this.txtBoxAddCountry.TabIndex = 15;
             // 
             // txtBoxAddPostCode
             // 
-            this.txtBoxAddPostCode.Location = new System.Drawing.Point(84, 236);
+            this.txtBoxAddPostCode.Location = new System.Drawing.Point(84, 214);
             this.txtBoxAddPostCode.Name = "txtBoxAddPostCode";
             this.txtBoxAddPostCode.Size = new System.Drawing.Size(127, 20);
             this.txtBoxAddPostCode.TabIndex = 14;
@@ -339,7 +351,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(17, 307);
+            this.label4.Location = new System.Drawing.Point(17, 285);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(32, 13);
             this.label4.TabIndex = 13;
@@ -348,7 +360,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(17, 274);
+            this.label3.Location = new System.Drawing.Point(17, 252);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(43, 13);
             this.label3.TabIndex = 12;
@@ -357,7 +369,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(17, 239);
+            this.label2.Location = new System.Drawing.Point(17, 217);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(64, 13);
             this.label2.TabIndex = 11;
@@ -366,7 +378,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(17, 199);
+            this.label1.Location = new System.Drawing.Point(17, 177);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(24, 13);
             this.label1.TabIndex = 10;
@@ -374,14 +386,14 @@
             // 
             // txtBoxAddCity
             // 
-            this.txtBoxAddCity.Location = new System.Drawing.Point(84, 196);
+            this.txtBoxAddCity.Location = new System.Drawing.Point(84, 174);
             this.txtBoxAddCity.Name = "txtBoxAddCity";
             this.txtBoxAddCity.Size = new System.Drawing.Size(127, 20);
             this.txtBoxAddCity.TabIndex = 9;
             // 
             // txtBoxAddCustomerPhone
             // 
-            this.txtBoxAddCustomerPhone.Location = new System.Drawing.Point(84, 337);
+            this.txtBoxAddCustomerPhone.Location = new System.Drawing.Point(84, 315);
             this.txtBoxAddCustomerPhone.Name = "txtBoxAddCustomerPhone";
             this.txtBoxAddCustomerPhone.Size = new System.Drawing.Size(127, 20);
             this.txtBoxAddCustomerPhone.TabIndex = 6;
@@ -389,7 +401,7 @@
             // labelCustomerPhone
             // 
             this.labelCustomerPhone.AutoSize = true;
-            this.labelCustomerPhone.Location = new System.Drawing.Point(17, 340);
+            this.labelCustomerPhone.Location = new System.Drawing.Point(17, 318);
             this.labelCustomerPhone.Name = "labelCustomerPhone";
             this.labelCustomerPhone.Size = new System.Drawing.Size(38, 13);
             this.labelCustomerPhone.TabIndex = 5;
@@ -401,12 +413,12 @@
             this.btnAddCustomerInfo.Name = "btnAddCustomerInfo";
             this.btnAddCustomerInfo.Size = new System.Drawing.Size(112, 23);
             this.btnAddCustomerInfo.TabIndex = 4;
-            this.btnAddCustomerInfo.Text = "Add Customer";
+            this.btnAddCustomerInfo.Text = "Add Guest";
             this.btnAddCustomerInfo.UseVisualStyleBackColor = true;
             // 
             // txtBoxAddCustomerAddress
             // 
-            this.txtBoxAddCustomerAddress.Location = new System.Drawing.Point(84, 139);
+            this.txtBoxAddCustomerAddress.Location = new System.Drawing.Point(84, 117);
             this.txtBoxAddCustomerAddress.Multiline = true;
             this.txtBoxAddCustomerAddress.Name = "txtBoxAddCustomerAddress";
             this.txtBoxAddCustomerAddress.Size = new System.Drawing.Size(127, 39);
@@ -415,7 +427,7 @@
             // labelCustomerAddress
             // 
             this.labelCustomerAddress.AutoSize = true;
-            this.labelCustomerAddress.Location = new System.Drawing.Point(17, 142);
+            this.labelCustomerAddress.Location = new System.Drawing.Point(17, 120);
             this.labelCustomerAddress.Name = "labelCustomerAddress";
             this.labelCustomerAddress.Size = new System.Drawing.Size(45, 13);
             this.labelCustomerAddress.TabIndex = 2;
@@ -423,7 +435,7 @@
             // 
             // txtBoxAddFirstName
             // 
-            this.txtBoxAddFirstName.Location = new System.Drawing.Point(84, 59);
+            this.txtBoxAddFirstName.Location = new System.Drawing.Point(84, 37);
             this.txtBoxAddFirstName.Name = "txtBoxAddFirstName";
             this.txtBoxAddFirstName.Size = new System.Drawing.Size(127, 20);
             this.txtBoxAddFirstName.TabIndex = 1;
@@ -431,49 +443,17 @@
             // labelCustomerName
             // 
             this.labelCustomerName.AutoSize = true;
-            this.labelCustomerName.Location = new System.Drawing.Point(17, 59);
+            this.labelCustomerName.Location = new System.Drawing.Point(17, 37);
             this.labelCustomerName.Name = "labelCustomerName";
             this.labelCustomerName.Size = new System.Drawing.Size(57, 13);
             this.labelCustomerName.TabIndex = 0;
             this.labelCustomerName.Text = "First Name";
             // 
-            // txtBoxAddLastName
-            // 
-            this.txtBoxAddLastName.Location = new System.Drawing.Point(84, 98);
-            this.txtBoxAddLastName.Name = "txtBoxAddLastName";
-            this.txtBoxAddLastName.Size = new System.Drawing.Size(127, 20);
-            this.txtBoxAddLastName.TabIndex = 20;
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(17, 101);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(58, 13);
-            this.label10.TabIndex = 19;
-            this.label10.Text = "Last Name";
-            // 
-            // txtBoxUpdateLastName
-            // 
-            this.txtBoxUpdateLastName.Location = new System.Drawing.Point(82, 95);
-            this.txtBoxUpdateLastName.Name = "txtBoxUpdateLastName";
-            this.txtBoxUpdateLastName.Size = new System.Drawing.Size(127, 20);
-            this.txtBoxUpdateLastName.TabIndex = 26;
-            // 
-            // label11
-            // 
-            this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(15, 98);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(58, 13);
-            this.label11.TabIndex = 25;
-            this.label11.Text = "Last Name";
-            // 
             // GuestForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(698, 742);
+            this.ClientSize = new System.Drawing.Size(846, 742);
             this.Controls.Add(this.dataGridViewCustomer);
             this.Controls.Add(this.groupBox4);
             this.Controls.Add(this.btnDeleteCustomer);
@@ -530,8 +510,6 @@
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.TextBox txtBoxUpdateCity;
-        private System.Windows.Forms.TextBox txtBoxAddID;
-        private System.Windows.Forms.Label label9;
         private System.Windows.Forms.TextBox txtBoxAddLastName;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.TextBox txtBoxUpdateLastName;
