@@ -26,10 +26,10 @@ namespace ProjectTeam06Hotel
             this.Text = "Reservation Form";
             context = new VancouverHotelEntities();
             context.Database.Log = (s => Debug.Write(s));
-            context.SeedDatabase();
-            context.SaveChanges();
+           // context.SeedDatabase();
+           // context.SaveChanges();
 
-            this.Load += ReservationForm_Load;
+            this.Load += (s,e) => ReservationForm_Load();
 
 
             // register event handler for when a guest is selected
@@ -42,13 +42,26 @@ namespace ProjectTeam06Hotel
             // this.FormClosed += (s, e) => context.Dispose();
 
             buttonBook.Click += ButtonBook_Click;
-            // buttonCancelBooking.Click += DeleteBook_Click;
+            buttonCancelBooking.Click += buttonCancelBooking_Click;
+            buttonUpdateRoom.Click += ButtonUpdateRoom_Click;
         }
 
-        private void ReservationForm_Load(object sender, EventArgs e)
+        private void buttonCancelBooking_Click(object sender, EventArgs e)
+        {
+            foreach (DataGridViewRow row in dataGridViewReservations.SelectedRows)
+            {
+                Reservation reservation = row.DataBoundItem as Reservation;
+                context.Reservations.Attach(reservation);
+                context.Reservations.Remove(reservation);
+            }
+            context.SaveChanges();
+            ReservationForm_Load();
+        }
+
+        private void ReservationForm_Load()
         {
             // bind the listbox of guest and rooms
-
+             
             listBoxGuestName.DataSource = Controller<VancouverHotelEntities, Guest>.SetBindingList();
             listBoxRoomType.DataSource = Controller<VancouverHotelEntities, Room>.SetBindingList();
 
@@ -61,12 +74,15 @@ namespace ProjectTeam06Hotel
 
             textBoxGuestID.ResetText();
             textBoxRoomID.ResetText();
+            textBoxResevationID.ResetText();
 
             InitializeDataGridView<Reservation>(dataGridViewReservations, "Reservations");
             this.dataGridViewReservations.Columns["Guest"].Visible = false;
             this.dataGridViewReservations.Columns["Payments"].Visible = false;
             this.dataGridViewReservations.Columns["Room"].Visible = false;
             this.dataGridViewReservations.Columns["RoomReservations"].Visible = false;
+
+            dataGridViewReservations.DataSource = context.Reservations.ToList();
 
             context = new VancouverHotelEntities();
             context.Database.Log = (s => Debug.Write(s));
@@ -81,10 +97,14 @@ namespace ProjectTeam06Hotel
             foreach (DataGridViewRow row in dataGridViewReservations.SelectedRows)
                 reservation = row.DataBoundItem as Reservation;
 
+            textBoxResevationID.Text = reservation.ReservationId.ToString();
+            textBoxGuestID.Text = reservation.GuestId.ToString();
+            textBoxRoomID.Text = reservation.RoomId.ToString();
             textBoxNumberOfGuests.Text = reservation.NumberOfGuest.ToString();
-       
+            dateTimePickerReservation.Text = reservation.ReservationDate;
+            dateTimePickerCheckin.Text = reservation.CheckInDate;
+            dateTimePickerCheckOut.Text = reservation.CheckOutDate;
         }
-
 
         //select guest and room
         private void GetReservation()
@@ -99,7 +119,45 @@ namespace ProjectTeam06Hotel
             }
         }
 
-        //book room
+        /// <summary>
+        /// Update the db with the new reservation data
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void ButtonUpdateRoom_Click(object sender, EventArgs e)
+        {
+            if ((dataGridViewReservations.SelectedRows == null))
+            {
+                MessageBox.Show("Reservation to be updated must be selected");
+                return;
+            }
+
+            if (!string.IsNullOrEmpty(textBoxResevationID.Text) && !string.IsNullOrEmpty(textBoxGuestID.Text) && !string.IsNullOrEmpty(textBoxRoomID.Text) 
+                && !string.IsNullOrEmpty(dateTimePickerReservation.Text) && !string.IsNullOrEmpty(textBoxNumberOfGuests.Text) && !string.IsNullOrEmpty(dateTimePickerCheckin.Text)
+                && !string.IsNullOrEmpty(dateTimePickerCheckOut.Text))
+            {
+                var numNight = dateTimePickerCheckOut.Value.Day - dateTimePickerCheckin.Value.Day;
+                var reservation = context.Reservations.Find(int.Parse(textBoxResevationID.Text));
+                reservation.GuestId = int.Parse(textBoxGuestID.Text);
+                reservation.RoomId = int.Parse(textBoxRoomID.Text);
+                reservation.ReservationDate = dateTimePickerReservation.Text;
+                reservation.NumberOfGuest = int.Parse(textBoxNumberOfGuests.Text);
+                reservation.CheckInDate = dateTimePickerCheckin.Text;
+                reservation.CheckOutDate = dateTimePickerCheckOut.Text;
+                reservation.NumberOfNight = Convert.ToInt32(numNight);
+
+                ReservationForm_Load();
+                context.SaveChanges();
+                MessageBox.Show("Booked Infomation has been Updated");
+            }
+
+        }
+
+        /// <summary>
+        /// Add a Reservation to the db
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void ButtonBook_Click(object sender, EventArgs e)
         {
             if (!(listBoxGuestName.SelectedItem is Guest guest))
@@ -111,33 +169,49 @@ namespace ProjectTeam06Hotel
                     return;
                 }
             }
-            // get the guest data from the textboxes
+            try { 
+                // get the guest data from the textboxes
 
-            Reservation reservation = new Reservation();
+                Reservation reservation = new Reservation();
 
-            //reservation.ReservationId = Convert.ToInt32(textBoxResevationID.Text);
-            reservation.GuestId = Convert.ToInt32(textBoxGuestID.Text);
-            reservation.RoomId = Convert.ToInt32(textBoxRoomID.Text);
-            reservation.ReservationDate = textBoxReservationDate.Text;
-            reservation.NumberOfGuest = Convert.ToInt32(textBoxNumberOfGuests.Text);
-            reservation.CheckInDate = textBoxCheckinDate.Text;
-            reservation.CheckOutDate =textBoxCheckoutDate.Text;
+                var numNight = dateTimePickerCheckOut.Value.Day - dateTimePickerCheckin.Value.Day;
 
-            // now update the db
+                //reservation.ReservationId = Convert.ToInt32(textBoxResevationID.Text);
+                reservation.GuestId = Convert.ToInt32(textBoxGuestID.Text);
+                reservation.RoomId = Convert.ToInt32(textBoxRoomID.Text);
+                reservation.ReservationDate = dateTimePickerReservation.Text;
+                reservation.NumberOfGuest = Convert.ToInt32(textBoxNumberOfGuests.Text);
+                reservation.CheckInDate = dateTimePickerCheckin.Text;
+                reservation.CheckOutDate = dateTimePickerCheckOut.Text;
+                reservation.NumberOfNight = Convert.ToInt32(numNight);
 
-            if (Controller<VancouverHotelEntities, Reservation>.AddEntity(reservation) == null)
+                if (InfoIsInvalid(reservation))
+                {
+                    MessageBox.Show("Reservation Information is missing");
+                }
+
+                // now update the db
+
+                if (Controller<VancouverHotelEntities, Reservation>.AddEntity(reservation) == null)
+                {
+                    MessageBox.Show("Cannot add reservation to database");
+                    return;
+                }
+            }
+            catch (Exception)
             {
-                MessageBox.Show("Cannot add reservation to database");
-                return;
+                MessageBox.Show("Unable to book a reservation to database. Please fill missing info");
             }
 
 
             InitializeDataGridView<Reservation>(dataGridViewReservations, "Reservation");
 
-
         }
-            //inital datagrid
-            private void InitializeDataGridView<T>(DataGridView gridView, params string[] navProperties) where T : class
+
+        /// <summary>
+        /// Set up the datagridview controls
+        /// </summary>
+        private void InitializeDataGridView<T>(DataGridView gridView, params string[] navProperties) where T : class
         {
             // Allow users to add/delete rows, and fill out columns to the entire width of the control
 
@@ -145,20 +219,20 @@ namespace ProjectTeam06Hotel
             gridView.AllowUserToDeleteRows = true;
             gridView.ReadOnly = true;
             gridView.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-
-            // set the handler used to delete an item. Note use of generics.
-
-            //gridView.UserDeletedRow += GridView_UserDeletedRow<T>;
-
-            // probably not needed, but just in case we have some issues
-
             gridView.DataError += (s, e) => GridView_DataError<T>(s as DataGridView, e);
-
-            // create a binding list and set the DataSource
-
             gridView.DataSource = SetBindingList<T>();
         }
 
+
+        /// <summary>
+        /// Generic method to load a table and set it to a BindingList for use
+        /// by DataGridView.
+        /// 
+        /// Can be used to reload tables from db. This is done in the generic
+        /// addupdate form processing.
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <returns></returns>
         private BindingList<T> SetBindingList<T>() where T : class
         {
             DbSet<T> dbSet = context.Set<T>();
@@ -172,6 +246,20 @@ namespace ProjectTeam06Hotel
         {
             Debug.WriteLine("DataError " + typeof(T) + " " + gridView.Name + " row " + e.RowIndex + " col " + e.ColumnIndex + " Context: " + e.Context.ToString());
             e.Cancel = true;
+        }
+
+        /// <summary>
+        /// Make sure all reservation info exists and is not blank
+        /// </summary>
+        /// <param name="roomType"></param>
+        /// <returns></returns>
+        private bool InfoIsInvalid(Reservation reservation)
+        {
+            return (reservation.ReservationDate == null || reservation.ReservationDate.Trim().Length == 0 ||
+                    reservation.NumberOfGuest == null || reservation.NumberOfGuest.ToString().Trim().Length == 0 ||
+                    reservation.CheckInDate == null || reservation.CheckInDate.Trim().Length == 0 ||
+                    reservation.CheckOutDate == null || reservation.CheckOutDate.Trim().Length == 0 
+                    );
         }
     }
 
