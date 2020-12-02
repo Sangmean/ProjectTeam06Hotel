@@ -25,7 +25,7 @@ namespace ProjectTeam06Hotel
             this.Text = "Guest Form";
             context = new VancouverHotelEntities();
             context.Database.Log = (s => Debug.Write(s));
-          //  context.SeedDatabase();
+          // context.SeedDatabase();
 
             // register the event handlers
             this.Load += (s, e) => GuestForm_Load();

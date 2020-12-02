@@ -279,7 +279,7 @@
             this.labelTxtCustomerInfo.AutoSize = true;
             this.labelTxtCustomerInfo.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.labelTxtCustomerInfo.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.labelTxtCustomerInfo.Location = new System.Drawing.Point(370, 22);
+            this.labelTxtCustomerInfo.Location = new System.Drawing.Point(72, 20);
             this.labelTxtCustomerInfo.Name = "labelTxtCustomerInfo";
             this.labelTxtCustomerInfo.Size = new System.Drawing.Size(109, 15);
             this.labelTxtCustomerInfo.TabIndex = 9;
@@ -453,12 +453,13 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(846, 742);
+            this.ClientSize = new System.Drawing.Size(871, 726);
             this.Controls.Add(this.dataGridViewCustomer);
             this.Controls.Add(this.groupBox4);
             this.Controls.Add(this.btnDeleteCustomer);
             this.Controls.Add(this.labelTxtCustomerInfo);
             this.Controls.Add(this.groupBox3);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.SizableToolWindow;
             this.Name = "GuestForm";
             this.Text = "Customer";
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewCustomer)).EndInit();

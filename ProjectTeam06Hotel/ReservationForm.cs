@@ -162,7 +162,6 @@ namespace ProjectTeam06Hotel
             if (!(listBoxGuestName.SelectedItem is Guest guest))
             {
                 if (!(listBoxRoomType.SelectedItem is Room room))
-
                 {
                     MessageBox.Show("guest or room to be updated must be selected");
                     return;
@@ -221,7 +220,6 @@ namespace ProjectTeam06Hotel
             gridView.DataError += (s, e) => GridView_DataError<T>(s as DataGridView, e);
             gridView.DataSource = SetBindingList<T>();
         }
-
 
         /// <summary>
         /// Generic method to load a table and set it to a BindingList for use

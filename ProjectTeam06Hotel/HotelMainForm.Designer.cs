@@ -46,7 +46,7 @@
             this.labelTxtMain.Location = new System.Drawing.Point(213, 29);
             this.labelTxtMain.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labelTxtMain.Name = "labelTxtMain";
-            this.labelTxtMain.Size = new System.Drawing.Size(398, 328);
+            this.labelTxtMain.Size = new System.Drawing.Size(268, 220);
             this.labelTxtMain.TabIndex = 1;
             this.labelTxtMain.Text = "Vancouver \r\nBeachside\r\nHotel\r\n";
             this.labelTxtMain.TextAlign = System.Drawing.ContentAlignment.TopCenter;
@@ -116,7 +116,7 @@
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(44)))), ((int)(((byte)(51)))));
-            this.ClientSize = new System.Drawing.Size(780, 670);
+            this.ClientSize = new System.Drawing.Size(777, 701);
             this.Controls.Add(this.buttonPayment);
             this.Controls.Add(this.buttonReservation);
             this.Controls.Add(this.buttonFrontDesk);
@@ -124,7 +124,7 @@
             this.Controls.Add(this.labelTxtMain);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(62)))), ((int)(((byte)(120)))), ((int)(((byte)(138)))));
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.SizableToolWindow;
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "HotelMainForm";
             this.Text = "Hotel Form";

@@ -29,7 +29,7 @@ namespace ProjectTeam06Hotel
 
             context = new VancouverHotelEntities();
             //context.Database.Log = (s => Debug.Write(s));
-           //context.SeedDatabase();
+           // context.SeedDatabase();
 
             // register the event handlers
             this.Load += (s, e) => RoomInfoForm_Load();

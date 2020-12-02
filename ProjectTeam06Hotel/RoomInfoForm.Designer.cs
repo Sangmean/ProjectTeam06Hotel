@@ -59,10 +59,9 @@
             this.labelTxtRoomInfo.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.labelTxtRoomInfo.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.labelTxtRoomInfo.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.labelTxtRoomInfo.Location = new System.Drawing.Point(108, 115);
-            this.labelTxtRoomInfo.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.labelTxtRoomInfo.Location = new System.Drawing.Point(72, 75);
             this.labelTxtRoomInfo.Name = "labelTxtRoomInfo";
-            this.labelTxtRoomInfo.Size = new System.Drawing.Size(159, 22);
+            this.labelTxtRoomInfo.Size = new System.Drawing.Size(108, 15);
             this.labelTxtRoomInfo.TabIndex = 8;
             this.labelTxtRoomInfo.Text = "Room Information";
             // 
@@ -80,11 +79,10 @@
             this.dataGridViewRoom.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridViewRoom.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewRoom.GridColor = System.Drawing.SystemColors.ActiveBorder;
-            this.dataGridViewRoom.Location = new System.Drawing.Point(48, 171);
-            this.dataGridViewRoom.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.dataGridViewRoom.Location = new System.Drawing.Point(32, 111);
             this.dataGridViewRoom.Name = "dataGridViewRoom";
             this.dataGridViewRoom.RowHeadersWidth = 62;
-            this.dataGridViewRoom.Size = new System.Drawing.Size(717, 157);
+            this.dataGridViewRoom.Size = new System.Drawing.Size(478, 102);
             this.dataGridViewRoom.TabIndex = 6;
             // 
             // groupBox1
@@ -101,11 +99,9 @@
             this.groupBox1.Controls.Add(this.labelRoomPrice);
             this.groupBox1.Controls.Add(this.textBoxAddRoomType);
             this.groupBox1.Controls.Add(this.labelRoomName);
-            this.groupBox1.Location = new System.Drawing.Point(108, 158);
-            this.groupBox1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.groupBox1.Location = new System.Drawing.Point(72, 103);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Padding = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.groupBox1.Size = new System.Drawing.Size(822, 416);
+            this.groupBox1.Size = new System.Drawing.Size(548, 270);
             this.groupBox1.TabIndex = 5;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Room Information";
@@ -114,10 +110,9 @@
             // 
             this.buttonRoomTypeDelete.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonRoomTypeDelete.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.buttonRoomTypeDelete.Location = new System.Drawing.Point(653, 359);
-            this.buttonRoomTypeDelete.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.buttonRoomTypeDelete.Location = new System.Drawing.Point(435, 233);
             this.buttonRoomTypeDelete.Name = "buttonRoomTypeDelete";
-            this.buttonRoomTypeDelete.Size = new System.Drawing.Size(112, 35);
+            this.buttonRoomTypeDelete.Size = new System.Drawing.Size(75, 23);
             this.buttonRoomTypeDelete.TabIndex = 11;
             this.buttonRoomTypeDelete.Text = "Delete";
             this.buttonRoomTypeDelete.UseVisualStyleBackColor = true;
@@ -126,10 +121,9 @@
             // 
             this.buttonRoomTypeUpdate.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonRoomTypeUpdate.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.buttonRoomTypeUpdate.Location = new System.Drawing.Point(348, 359);
-            this.buttonRoomTypeUpdate.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.buttonRoomTypeUpdate.Location = new System.Drawing.Point(232, 233);
             this.buttonRoomTypeUpdate.Name = "buttonRoomTypeUpdate";
-            this.buttonRoomTypeUpdate.Size = new System.Drawing.Size(112, 35);
+            this.buttonRoomTypeUpdate.Size = new System.Drawing.Size(75, 23);
             this.buttonRoomTypeUpdate.TabIndex = 10;
             this.buttonRoomTypeUpdate.Text = "Update";
             this.buttonRoomTypeUpdate.UseVisualStyleBackColor = true;
@@ -137,31 +131,29 @@
             // listBoxStatus
             // 
             this.listBoxStatus.FormattingEnabled = true;
-            this.listBoxStatus.ItemHeight = 20;
             this.listBoxStatus.Items.AddRange(new object[] {
             "Occupied",
             "Vacant"});
-            this.listBoxStatus.Location = new System.Drawing.Point(513, 51);
+            this.listBoxStatus.Location = new System.Drawing.Point(342, 33);
+            this.listBoxStatus.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.listBoxStatus.Name = "listBoxStatus";
-            this.listBoxStatus.Size = new System.Drawing.Size(188, 44);
+            this.listBoxStatus.Size = new System.Drawing.Size(127, 30);
             this.listBoxStatus.TabIndex = 9;
             // 
             // textBoxCapacity
             // 
-            this.textBoxCapacity.Location = new System.Drawing.Point(513, 111);
-            this.textBoxCapacity.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.textBoxCapacity.Location = new System.Drawing.Point(342, 72);
             this.textBoxCapacity.Name = "textBoxCapacity";
-            this.textBoxCapacity.Size = new System.Drawing.Size(188, 26);
+            this.textBoxCapacity.Size = new System.Drawing.Size(127, 20);
             this.textBoxCapacity.TabIndex = 8;
             // 
             // labelCapacity
             // 
             this.labelCapacity.AutoSize = true;
             this.labelCapacity.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.labelCapacity.Location = new System.Drawing.Point(404, 111);
-            this.labelCapacity.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.labelCapacity.Location = new System.Drawing.Point(269, 72);
             this.labelCapacity.Name = "labelCapacity";
-            this.labelCapacity.Size = new System.Drawing.Size(70, 20);
+            this.labelCapacity.Size = new System.Drawing.Size(48, 13);
             this.labelCapacity.TabIndex = 6;
             this.labelCapacity.Text = "Capacity";
             // 
@@ -169,10 +161,9 @@
             // 
             this.labelStatus.AutoSize = true;
             this.labelStatus.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.labelStatus.Location = new System.Drawing.Point(404, 54);
-            this.labelStatus.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.labelStatus.Location = new System.Drawing.Point(269, 35);
             this.labelStatus.Name = "labelStatus";
-            this.labelStatus.Size = new System.Drawing.Size(56, 20);
+            this.labelStatus.Size = new System.Drawing.Size(37, 13);
             this.labelStatus.TabIndex = 5;
             this.labelStatus.Text = "Status";
             // 
@@ -180,49 +171,44 @@
             // 
             this.buttonRoomTypeAdd.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonRoomTypeAdd.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.buttonRoomTypeAdd.Location = new System.Drawing.Point(48, 359);
-            this.buttonRoomTypeAdd.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.buttonRoomTypeAdd.Location = new System.Drawing.Point(32, 233);
             this.buttonRoomTypeAdd.Name = "buttonRoomTypeAdd";
-            this.buttonRoomTypeAdd.Size = new System.Drawing.Size(112, 35);
+            this.buttonRoomTypeAdd.Size = new System.Drawing.Size(75, 23);
             this.buttonRoomTypeAdd.TabIndex = 4;
             this.buttonRoomTypeAdd.Text = "Add";
             this.buttonRoomTypeAdd.UseVisualStyleBackColor = true;
             // 
             // textBoxPricePerNight
             // 
-            this.textBoxPricePerNight.Location = new System.Drawing.Point(118, 111);
-            this.textBoxPricePerNight.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.textBoxPricePerNight.Location = new System.Drawing.Point(79, 72);
             this.textBoxPricePerNight.Name = "textBoxPricePerNight";
-            this.textBoxPricePerNight.Size = new System.Drawing.Size(188, 26);
+            this.textBoxPricePerNight.Size = new System.Drawing.Size(127, 20);
             this.textBoxPricePerNight.TabIndex = 3;
             // 
             // labelRoomPrice
             // 
             this.labelRoomPrice.AutoSize = true;
             this.labelRoomPrice.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.labelRoomPrice.Location = new System.Drawing.Point(18, 117);
-            this.labelRoomPrice.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.labelRoomPrice.Location = new System.Drawing.Point(12, 76);
             this.labelRoomPrice.Name = "labelRoomPrice";
-            this.labelRoomPrice.Size = new System.Drawing.Size(91, 20);
+            this.labelRoomPrice.Size = new System.Drawing.Size(62, 13);
             this.labelRoomPrice.TabIndex = 2;
             this.labelRoomPrice.Text = "Room Price";
             // 
             // textBoxAddRoomType
             // 
-            this.textBoxAddRoomType.Location = new System.Drawing.Point(118, 51);
-            this.textBoxAddRoomType.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.textBoxAddRoomType.Location = new System.Drawing.Point(79, 33);
             this.textBoxAddRoomType.Name = "textBoxAddRoomType";
-            this.textBoxAddRoomType.Size = new System.Drawing.Size(188, 26);
+            this.textBoxAddRoomType.Size = new System.Drawing.Size(127, 20);
             this.textBoxAddRoomType.TabIndex = 1;
             // 
             // labelRoomName
             // 
             this.labelRoomName.AutoSize = true;
             this.labelRoomName.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.labelRoomName.Location = new System.Drawing.Point(19, 51);
-            this.labelRoomName.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.labelRoomName.Location = new System.Drawing.Point(13, 33);
             this.labelRoomName.Name = "labelRoomName";
-            this.labelRoomName.Size = new System.Drawing.Size(90, 20);
+            this.labelRoomName.Size = new System.Drawing.Size(62, 13);
             this.labelRoomName.TabIndex = 0;
             this.labelRoomName.Text = "Room Type";
             // 
@@ -230,9 +216,10 @@
             // 
             this.buttonBackupDatabase.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonBackupDatabase.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.buttonBackupDatabase.Location = new System.Drawing.Point(1007, 394);
+            this.buttonBackupDatabase.Location = new System.Drawing.Point(414, 493);
+            this.buttonBackupDatabase.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.buttonBackupDatabase.Name = "buttonBackupDatabase";
-            this.buttonBackupDatabase.Size = new System.Drawing.Size(133, 56);
+            this.buttonBackupDatabase.Size = new System.Drawing.Size(89, 36);
             this.buttonBackupDatabase.TabIndex = 12;
             this.buttonBackupDatabase.Text = "Backup\r\nDatabase\r\n\r\n";
             this.buttonBackupDatabase.UseVisualStyleBackColor = true;
@@ -241,21 +228,21 @@
             // 
             this.dataGridViewAddRoom.BackgroundColor = System.Drawing.SystemColors.ActiveBorder;
             this.dataGridViewAddRoom.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridViewAddRoom.Location = new System.Drawing.Point(108, 690);
+            this.dataGridViewAddRoom.Location = new System.Drawing.Point(72, 448);
+            this.dataGridViewAddRoom.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.dataGridViewAddRoom.Name = "dataGridViewAddRoom";
             this.dataGridViewAddRoom.RowHeadersWidth = 62;
             this.dataGridViewAddRoom.RowTemplate.Height = 28;
-            this.dataGridViewAddRoom.Size = new System.Drawing.Size(349, 154);
+            this.dataGridViewAddRoom.Size = new System.Drawing.Size(233, 100);
             this.dataGridViewAddRoom.TabIndex = 13;
             // 
             // buttonRoomAdd
             // 
             this.buttonRoomAdd.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonRoomAdd.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.buttonRoomAdd.Location = new System.Drawing.Point(105, 861);
-            this.buttonRoomAdd.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.buttonRoomAdd.Location = new System.Drawing.Point(70, 560);
             this.buttonRoomAdd.Name = "buttonRoomAdd";
-            this.buttonRoomAdd.Size = new System.Drawing.Size(112, 35);
+            this.buttonRoomAdd.Size = new System.Drawing.Size(75, 23);
             this.buttonRoomAdd.TabIndex = 12;
             this.buttonRoomAdd.Text = "Add";
             this.buttonRoomAdd.UseVisualStyleBackColor = true;
@@ -264,10 +251,9 @@
             // 
             this.buttonRoomDelete.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonRoomDelete.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.buttonRoomDelete.Location = new System.Drawing.Point(345, 861);
-            this.buttonRoomDelete.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.buttonRoomDelete.Location = new System.Drawing.Point(230, 560);
             this.buttonRoomDelete.Name = "buttonRoomDelete";
-            this.buttonRoomDelete.Size = new System.Drawing.Size(112, 35);
+            this.buttonRoomDelete.Size = new System.Drawing.Size(75, 23);
             this.buttonRoomDelete.TabIndex = 14;
             this.buttonRoomDelete.Text = "Delete";
             this.buttonRoomDelete.UseVisualStyleBackColor = true;
@@ -278,20 +264,19 @@
             this.label1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.label1.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.label1.Location = new System.Drawing.Point(113, 647);
-            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label1.Location = new System.Drawing.Point(75, 421);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(69, 22);
+            this.label1.Size = new System.Drawing.Size(47, 15);
             this.label1.TabIndex = 15;
             this.label1.Text = "Rooms";
             // 
             // RoomInfoForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.CausesValidation = false;
-            this.ClientSize = new System.Drawing.Size(1196, 1001);
+            this.ClientSize = new System.Drawing.Size(666, 638);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.buttonRoomDelete);
             this.Controls.Add(this.buttonRoomAdd);
@@ -302,7 +287,6 @@
             this.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.KeyPreview = true;
-            this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "RoomInfoForm";
             this.Text = "Room Info";
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewRoom)).EndInit();

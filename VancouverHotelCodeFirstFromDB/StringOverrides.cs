@@ -25,7 +25,7 @@ namespace VancouverHotelCodeFirstFromDB
             VancouverHotelEntities context = new VancouverHotelEntities();
 
             RoomType roomType = context.RoomTypes.Find(RoomTypeId);
-            return RoomId + ": " + roomType.RoomTypeName + " " + roomType.Status;
+            return RoomId + ": " + roomType.RoomTypeName + " " + "$" + roomType.PricePerNight;
         }
     }
 
