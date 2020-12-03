@@ -28,15 +28,12 @@ namespace ProjectTeam06Hotel
             };
 
             context = new VancouverHotelEntities();
-            //context.Database.Log = (s => Debug.Write(s));
-           // context.SeedDatabase();
 
             // register the event handlers
             this.Load += (s, e) => RoomInfoForm_Load();
             buttonRoomTypeAdd.Click += ButtonRoomTypeAdd_Click;
             buttonRoomTypeUpdate.Click += ButtonRoomTypeUpdate_Click;
             buttonRoomTypeDelete.Click += ButtonRoomTypeDelete_Click;
-
             buttonBackupDatabase.Click += (s, e) => BackupDataSetToXML();
             buttonRoomAdd.Click += ButtonRoomAdd_Click;
             buttonRoomDelete.Click += ButtonRoomDelete_Click;
@@ -46,6 +43,49 @@ namespace ProjectTeam06Hotel
     
         }
 
+        /// <summary>
+        /// The form is initially created, but loaded each time it is shown.
+        /// Reload data each time the form loaded.
+        /// This is the handler for the Load event.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void RoomInfoForm_Load()
+        {
+
+            InitializeDataGridView<RoomType>(dataGridViewRoom, "RoomType");
+            InitializeDataGridView<Room>(dataGridViewAddRoom, "Room");
+
+            this.dataGridViewAddRoom.Columns["Reservations"].Visible = false;
+            this.dataGridViewAddRoom.Columns["RoomType"].Visible = false;
+            this.dataGridViewAddRoom.Columns["RoomReservation"].Visible = false;
+            this.dataGridViewAddRoom.Columns["RoomTypes"].Visible = false;
+
+            dataGridViewRoom.DataSource = context.RoomTypes.ToList();
+            dataGridViewAddRoom.DataSource = context.Rooms.ToList();
+
+        }
+
+        /// <summary>
+        /// Set up the datagridview controls
+        /// </summary>
+        private void InitializeDataGridView<T>(DataGridView gridView, params string[] navProperties) where T : class
+        {
+
+            gridView.AllowUserToAddRows = false;
+            gridView.AllowUserToDeleteRows = true;
+            gridView.ReadOnly = true;
+            gridView.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            gridView.DataSource = SetBindingList<T>();
+
+        }
+
+
+        /// <summary>
+        /// Remove selected Row
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void ButtonRoomDelete_Click(object sender, EventArgs e)
         {
             foreach (DataGridViewRow row in dataGridViewAddRoom.SelectedRows)
@@ -58,6 +98,11 @@ namespace ProjectTeam06Hotel
             RoomInfoForm_Load();
         }
 
+        /// <summary>
+        /// Add a room to the db
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void ButtonRoomAdd_Click(object sender, EventArgs e)
         {
             RoomType roomType = new RoomType();
@@ -84,7 +129,7 @@ namespace ProjectTeam06Hotel
         }
 
         /// <summary>
-        /// Delete a selected RoomType frin db
+        /// Delete a selected RoomType from db
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -106,7 +151,6 @@ namespace ProjectTeam06Hotel
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-
         private void ButtonRoomTypeUpdate_Click(object sender, EventArgs e)
         {
             if ((dataGridViewRoom.SelectedRows == null))
@@ -220,40 +264,6 @@ namespace ProjectTeam06Hotel
             RoomInfoForm_Load();
             context.SaveChanges();
     
-        }
-
-        /// <summary>
-        /// Set up the datagridview controls
-        /// </summary>
-        private void RoomInfoForm_Load()
-        {
-
-            InitializeDataGridView<RoomType>(dataGridViewRoom, "RoomType");
-            InitializeDataGridView<Room>(dataGridViewAddRoom, "Room");
-
-            this.dataGridViewAddRoom.Columns["Reservations"].Visible = false;
-            this.dataGridViewAddRoom.Columns["RoomType"].Visible = false;
-            this.dataGridViewAddRoom.Columns["RoomReservation"].Visible = false;
-            this.dataGridViewAddRoom.Columns["RoomTypes"].Visible = false;
-
-
-            dataGridViewRoom.DataSource = context.RoomTypes.ToList();
-            dataGridViewAddRoom.DataSource = context.Rooms.ToList();
-
-        }
-
-        /// <summary>
-        /// Set up the datagridview controls
-        /// </summary>
-        private void InitializeDataGridView<T>(DataGridView gridView, params string[] navProperties) where T : class
-        {
-          
-            gridView.AllowUserToAddRows = false;
-            gridView.AllowUserToDeleteRows = true;
-            gridView.ReadOnly = true;
-            gridView.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            gridView.DataSource = SetBindingList<T>();
-
         }
 
         /// <summary>

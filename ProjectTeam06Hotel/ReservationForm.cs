@@ -22,30 +22,26 @@ namespace ProjectTeam06Hotel
         public ReservationForm()
         {
             InitializeComponent();
-
             this.Text = "Reservation Form";
             context = new VancouverHotelEntities();
-            context.Database.Log = (s => Debug.Write(s));
-           // context.SeedDatabase();
-           // context.SaveChanges();
 
+            // register the event handkers
             this.Load += (s,e) => ReservationForm_Load();
-
+            buttonBook.Click += ButtonBook_Click;
+            buttonCancelBooking.Click += buttonCancelBooking_Click;
+            buttonUpdateRoom.Click += ButtonUpdateRoom_Click;
 
             // register event handler for when a guest is selected
             listBoxGuestName.SelectedIndexChanged += (s, e) => GetReservation();
             listBoxRoomType.SelectedIndexChanged += (s, e) => GetReservation();
-
-            dataGridViewReservations.SelectionChanged += DataGridViewReservation_SelectionChanged;
-
-            // always dispose of the context when the form is closed.
-            // this.FormClosed += (s, e) => context.Dispose();
-
-            buttonBook.Click += ButtonBook_Click;
-            buttonCancelBooking.Click += buttonCancelBooking_Click;
-            buttonUpdateRoom.Click += ButtonUpdateRoom_Click;
+            dataGridViewReservations.SelectionChanged += DataGridViewReservation_SelectionChanged;  
         }
 
+        /// <summary>
+        /// Remove selected Row
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void buttonCancelBooking_Click(object sender, EventArgs e)
         {
             foreach (DataGridViewRow row in dataGridViewReservations.SelectedRows)
@@ -57,6 +53,13 @@ namespace ProjectTeam06Hotel
             ReservationForm_Load();
         }
 
+        /// <summary>
+        /// The form is initially created, but loaded each time it is shown.
+        /// Reload data each time the form loaded.
+        /// This is the handler for the Load event.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void ReservationForm_Load()
         {
             // bind the listbox of guest and rooms
