@@ -50,6 +50,12 @@ namespace SeedDatabaseExtensions
 				new Guest { GuestFirstName = "Taryn", GuestLastName = "Duinbleton", Adress = "2168 Holy Cross Pass,Qianfoling",
 					City = "Qianfoling", PostCode = "45467", Country = "China", Email = "tduinbleton3@gravatar.com", Phone = "539-339-6374" },
 
+				new Guest { GuestFirstName = "Sam", GuestLastName = "Li", Adress = "443 Glass st",
+					City = "Vancouver", PostCode = "34334", Country = "Chanada", Email = "sanku@gmail.com", Phone = "778-454-3454" },
+
+				new Guest { GuestFirstName = "Karen", GuestLastName = "Smith", Adress = "4545 Victoria ave",
+					City = "New York", PostCode = "34334", Country = "America", Email = "karensmith34@gmail.com", Phone = "343-454-2333" },
+
 			};
 
 
@@ -59,8 +65,11 @@ namespace SeedDatabaseExtensions
 
 			List<RoomType> roomTypeList = new List<RoomType>()
 			{
-				new RoomType{RoomTypeName = "Single Room", Status = "Occupied", Capacity = 1, PricePerNight = 100 },
-				new RoomType{RoomTypeName = "Double Room", Status = "Vacant", Capacity = 2, PricePerNight = 200}
+				new RoomType{RoomTypeName = "Single Room", Capacity = 1, PricePerNight = 100 },
+				new RoomType{RoomTypeName = "Double Room", Capacity = 3, PricePerNight = 300},
+				new RoomType{RoomTypeName = "Twin Room", Capacity = 3, PricePerNight = 300},
+				new RoomType{RoomTypeName = "King Room", Capacity = 4, PricePerNight = 400},
+			
 			};
 
 			context.RoomTypes.AddRange(roomTypeList);
@@ -69,8 +78,10 @@ namespace SeedDatabaseExtensions
 
 			List<Room> roomList = new List<Room>()
 			{
-				new Room{RoomTypeId = 1},
-				new Room{RoomTypeId = 2}
+				new Room{RoomTypeId = 1, Status = "Occupied"},
+				new Room{RoomTypeId = 2, Status = "Vacant"},
+				new Room{RoomTypeId = 2, Status = "Vacant"},
+				new Room{RoomTypeId = 4, Status = "Vacant"}
 			};
 
 			context.Rooms.AddRange(roomList);
@@ -80,7 +91,10 @@ namespace SeedDatabaseExtensions
             List<Reservation> reservationList = new List<Reservation>()
             {
                 new Reservation{GuestId = 1, RoomId = 1, ReservationDate = "2010-01-01" , CheckInDate = "2010-01-02",CheckOutDate = "2010-01-03", NumberOfGuest = 1, NumberOfNight = 1},
-			    new Reservation{GuestId = 2, RoomId = 2, ReservationDate = "2020-01-01", CheckInDate = "2020-01-02", CheckOutDate = "2020-01-03", NumberOfGuest = 2, NumberOfNight = 3}
+			    new Reservation{GuestId = 2, RoomId = 2, ReservationDate = "2020-01-01", CheckInDate = "2020-01-02", CheckOutDate = "2020-01-03", NumberOfGuest = 2, NumberOfNight = 1},
+				new Reservation{GuestId = 4, RoomId = 3, ReservationDate = "2020-01-01", CheckInDate = "2020-01-02", CheckOutDate = "2020-01-04", NumberOfGuest = 2, NumberOfNight = 2},
+				new Reservation{GuestId = 4, RoomId = 3, ReservationDate = "2020-10-23", CheckInDate = "2020-12-02", CheckOutDate = "2020-12-10", NumberOfGuest = 2, NumberOfNight = 8}
+
 
 			};
 
@@ -90,7 +104,6 @@ namespace SeedDatabaseExtensions
 			List<Payment> paymentsList = new List<Payment>()
 			{
 				new Payment{ReservationId = 1, GuestId = 1, Amount = 100, PaymentType = "VISA"},
-				new Payment{ReservationId = 2, GuestId = 2, Amount = 200, PaymentType = "Credit"}
 			};
 
 			context.Payments.AddRange(paymentsList);

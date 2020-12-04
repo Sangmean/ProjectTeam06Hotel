@@ -5,6 +5,6 @@
     [GuestId] INT NULL, 
     [Amount] DECIMAL NULL, 
     [PaymentType] NVARCHAR(50) NULL, 
-    CONSTRAINT [FK_Payment_ToReservatioin] FOREIGN KEY ([ReservationId]) REFERENCES Reservation([ReservationId]), 
-    CONSTRAINT [FK_Payment_ToGuest] FOREIGN KEY ([GuestId]) REFERENCES Guest([GuestId])
+    CONSTRAINT [FK_Payment_ToReservatioin] FOREIGN KEY ([ReservationId]) REFERENCES Reservation([ReservationId]) ON DELETE CASCADE, 
+    CONSTRAINT [FK_Payment_ToGuest] FOREIGN KEY ([GuestId]) REFERENCES Guest([GuestId]) ON DELETE CASCADE
 )

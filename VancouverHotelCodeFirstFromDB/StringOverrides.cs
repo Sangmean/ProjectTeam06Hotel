@@ -29,7 +29,7 @@ namespace VancouverHotelCodeFirstFromDB
         }
     }
 
-	partial class Reservation
+    partial class Reservation
     { 
 
 		public override string ToString()

@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using VancouverHotelCodeFirstFromDB;
 using System.Data.Entity;
 using System.Diagnostics;
+using SeedDatabaseExtensions;
 
 namespace ProjectTeam06Hotel
 {
@@ -19,7 +20,11 @@ namespace ProjectTeam06Hotel
         {
             InitializeComponent();
 
-            this.Text = "Vancouver Beachside Hotel";    
+            this.Text = "Vancouver Beachside Hotel";
+            VancouverHotelEntities context = new VancouverHotelEntities();
+            context.Database.Log = (s => Debug.Write(s));
+            context.SeedDatabase();
+            context.SaveChanges();
 
             buttonAdmin.Click += ButtonAdmin_Click;
             buttonFrontDesk.Click += ButtonFrontDesk_Click;
