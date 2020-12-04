@@ -124,6 +124,12 @@ namespace ProjectTeam06Hotel
                 reservation = row.DataBoundItem as Reservation;
             // get the guest data from the textboxes
 
+            // check if it's already paid
+            if (IsPaid(reservation))
+            {
+                MessageBox.Show("The reservation is already paid");
+                return;
+            }
 
             Payment pay = new Payment()
             {
@@ -133,9 +139,9 @@ namespace ProjectTeam06Hotel
                 PaymentType = textBoxPayType.Text.ToString()
             };
 
-            if (ReservationExists(pay))
+            if(pay.PaymentType.Trim() == null || pay.PaymentType.Length == 0)
             {
-                MessageBox.Show("The reservatopm is already paid.");
+                MessageBox.Show("Payment Type is requird");
                 return;
             }
 
@@ -147,8 +153,6 @@ namespace ProjectTeam06Hotel
                 return;
             }
 
-            InitializeDataGridView<Payment>(dataGridViewPayments, "Payment");
-
             context = new VancouverHotelEntities();
             context.Database.Log = (s => Debug.Write(s));
             context.Payments.Load();
@@ -156,7 +160,6 @@ namespace ProjectTeam06Hotel
 
             PaymentForm_Load();
             context.SaveChanges();
-
         }
 
 
@@ -198,6 +201,7 @@ namespace ProjectTeam06Hotel
 
             foreach (DataGridViewRow row in dataGridViewPayments.SelectedRows)
                 selectedPayment = row.DataBoundItem as Payment;
+  
 
             Payment payment = new Payment();
             payment.PaymentId = selectedPayment.PaymentId;
@@ -205,6 +209,18 @@ namespace ProjectTeam06Hotel
             payment.ReservationId = selectedPayment.ReservationId;
             payment.GuestId = selectedPayment.GuestId;
             payment.Amount = selectedPayment.Amount;
+
+            if (payment.PaymentType.Trim() == null || payment.PaymentType.Length == 0)
+            {
+                MessageBox.Show("Payment Type is requird");
+                return;
+            }
+
+            if(payment.PaymentType == selectedPayment.PaymentType)
+            {
+                MessageBox.Show("The payment already exists");
+                return;
+            }
 
             if (Controller<VancouverHotelEntities, Payment>.UpdateEntity(payment) == false)
             {
@@ -222,6 +238,7 @@ namespace ProjectTeam06Hotel
         /// </summary>
         private void DataGridViewPayments_SelectionChanged(object sender, EventArgs e)
         {
+            dataGridViewReservationInfo.ClearSelection();
             Payment payment = new Payment();
 
             foreach (DataGridViewRow row in dataGridViewPayments.SelectedRows)
@@ -232,13 +249,13 @@ namespace ProjectTeam06Hotel
         }
 
         /// <summary>
-        /// See if the reservation is already paid
+        /// See if a reservation is alrady paid 
         /// </summary>
-        /// <param name="payment"></param>
+        /// <param name="course"></param>
         /// <returns></returns>
-        private bool ReservationExists(Payment payment)
+        private bool IsPaid(Reservation reservation)
         {
-            return context.Payments.Any(c => c.ReservationId == payment.ReservationId);
+            return context.Payments.Any(c => c.ReservationId == reservation.ReservationId);
         }
 
         /// <summary>

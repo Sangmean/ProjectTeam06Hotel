@@ -6,7 +6,6 @@ using System.Windows.Forms;
 using System.Data.Entity;
 using System.Diagnostics;
 using EFControllerUtilities;
-using SeedDatabaseExtensions;
 using System.Data;
 
 namespace ProjectTeam06Hotel
@@ -39,7 +38,6 @@ namespace ProjectTeam06Hotel
             buttonRoomUpdate.Click += ButtonRoomUpdate_Click;
             buttonRoomDelete.Click += ButtonRoomDelete_Click;
        
-
             // register event handler for when a RoomType is selected
             dataGridViewRoom.SelectionChanged += DataGridViewRoom_SelectionChanged;
             dataGridViewAddRoom.SelectionChanged += DataGridViewAddRoom_SelectionChanged;
@@ -83,6 +81,101 @@ namespace ProjectTeam06Hotel
 
         }
 
+        /// <summary>
+        /// Add a RoomType to the db
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void ButtonRoomTypeAdd_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                RoomType roomType = new RoomType()
+                {
+                    RoomTypeName = textBoxAddRoomType.Text,
+                    PricePerNight = Decimal.Parse(textBoxPricePerNight.Text),
+                    Capacity = int.Parse(textBoxCapacity.Text)
+                };
+
+                if (InfoIsInvalid(roomType))
+                {
+                    MessageBox.Show("Room information is missing.");
+                    return;
+                }
+
+                if (RoomInfoExists(roomType))
+                {
+                    MessageBox.Show("The room informatio already exists.");
+                    return;
+                }
+
+                if (Controller<VancouverHotelEntities, RoomType>.AddEntity(roomType) == null)
+                {
+                    MessageBox.Show("Cannot add Room information to database");
+                    return;
+                }
+
+            }
+
+            catch (Exception)
+            {
+                MessageBox.Show("Unable to add room type to database.");
+            }
+
+            RoomInfoForm_Load();
+            context.SaveChanges();
+        }
+
+        /// <summary>
+        /// Update the db with the new RoomType data
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void ButtonRoomTypeUpdate_Click(object sender, EventArgs e)
+        {
+
+            if ((dataGridViewRoom.SelectedRows == null))
+            {
+                MessageBox.Show("Room to be updated must be selected");
+                return;
+            }
+
+            try
+            {
+                RoomType roomType = new RoomType();
+
+                roomType.RoomTypeId = selectedRoomId;
+                roomType.RoomTypeName = textBoxAddRoomType.Text;
+                roomType.PricePerNight = decimal.Parse(textBoxPricePerNight.Text);
+                roomType.Capacity = int.Parse(textBoxCapacity.Text);
+
+                if (InfoIsInvalid(roomType))
+                {
+                    MessageBox.Show("Room information is missing.");
+                    return;
+                }
+
+                if (RoomInfoExists(roomType))
+                {
+                    MessageBox.Show("The room informatio already exists.");
+                    return;
+                }
+
+                if (Controller<VancouverHotelEntities, RoomType>.UpdateEntity(roomType) == false)
+                {
+                    MessageBox.Show("Cannot update room type to database");
+                    return;
+                }
+            }
+
+            catch (Exception)
+            {
+                MessageBox.Show("Unable update room type to database");
+            }
+
+            RoomInfoForm_Load();
+            context.SaveChanges();
+        }
 
         /// <summary>
         /// Remove selected Row
@@ -91,7 +184,6 @@ namespace ProjectTeam06Hotel
         /// <param name="e"></param>
         private void ButtonRoomDelete_Click(object sender, EventArgs e)
         {
-
             try
             {
                 foreach(DataGridViewRow row in dataGridViewAddRoom.SelectedRows)
@@ -119,10 +211,10 @@ namespace ProjectTeam06Hotel
         private void ButtonRoomAdd_Click(object sender, EventArgs e)
         {
             RoomType roomType = new RoomType();
-            string selectedStatus = listBoxStatus.SelectedItem.ToString();
+            string selectedStatus = listBoxStatus.SelectedItem.ToString(); // get selected status 
 
             foreach (DataGridViewRow row in dataGridViewRoom.SelectedRows)
-                roomType = row.DataBoundItem as RoomType;
+                roomType = row.DataBoundItem as RoomType; // get sleceted roomType infomation
 
             Room room = new Room
             {
@@ -155,22 +247,25 @@ namespace ProjectTeam06Hotel
             }
             try
             {
-                string selectedStatus = listBoxStatus.SelectedItem.ToString();
+                string selectedStatus = listBoxStatus.SelectedItem.ToString(); // get selected status 
 
                 Room room = new Room();
                 Room selectedRoom = new Room();
 
-                if (selectedStatus == room.Status)
+                foreach (DataGridViewRow row in dataGridViewAddRoom.SelectedRows)
+                    selectedRoom = row.DataBoundItem as Room; // get sleceted roomType infomation
+
+
+                room.RoomId = selectedRoom.RoomId;
+                room.RoomTypeId = selectedRoom.RoomTypeId;
+
+                // check if the status is the same 
+                if (selectedRoom.Status == selectedStatus)
                 {
                     MessageBox.Show("The room already exists");
                 }
 
-                foreach (DataGridViewRow row in dataGridViewAddRoom.SelectedRows)
-                    selectedRoom = row.DataBoundItem as Room;
-
-                room.RoomId = selectedRoom.RoomId;
-                room.RoomTypeId = selectedRoom.RoomTypeId;
-                room.Status = listBoxStatus.SelectedItem.ToString();
+                room.Status = selectedStatus;
 
                 if (Controller<VancouverHotelEntities, Room>.UpdateEntity(room) == false)
                 {
@@ -214,56 +309,6 @@ namespace ProjectTeam06Hotel
         }
 
         /// <summary>
-        /// Update the db with the new RoomType data
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void ButtonRoomTypeUpdate_Click(object sender, EventArgs e)
-        {
-            if ((dataGridViewRoom.SelectedRows == null))
-            {
-                MessageBox.Show("Room to be updated must be selected");
-                return;
-            }
-
-            try
-            {
-                RoomType roomType = new RoomType();
-
-                roomType.RoomTypeId = selectedRoomId;
-                roomType.RoomTypeName = textBoxAddRoomType.Text;
-                roomType.PricePerNight = decimal.Parse(textBoxPricePerNight.Text);
-                roomType.Capacity = int.Parse(textBoxCapacity.Text);
-
-                if (InfoIsInvalid(roomType))
-                {
-                    MessageBox.Show("Room information is missing.");
-                    return;
-                }
-
-                if (RoomInfoExists(roomType))
-                {
-                    MessageBox.Show("The room informatio already exists.");
-                    return;
-                }
-
-                if (Controller<VancouverHotelEntities, RoomType>.UpdateEntity(roomType) == false)
-                {
-                    MessageBox.Show("Cannot update room type to database");
-                    return;
-                }
-            }
-
-            catch (Exception)
-            {
-                MessageBox.Show("Unable update room type to database");
-            }
-       
-            RoomInfoForm_Load();
-            context.SaveChanges();
-        }
-
-        /// <summary>
         /// Get a selected RoomType from the gridView and fill in the textboxes and a listbox with the
         /// info.
         /// </summary>
@@ -297,57 +342,6 @@ namespace ProjectTeam06Hotel
                 listBoxStatus.SelectedIndex = 1;
         }
 
-
-
-        /// <summary>
-        /// Add a RoomType to the db
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void ButtonRoomTypeAdd_Click(object sender, EventArgs e)
-        {
-            try
-            {
-               
-                RoomType roomType = new RoomType()
-                {
-                    RoomTypeName = textBoxAddRoomType.Text,
-                    PricePerNight = Decimal.Parse(textBoxPricePerNight.Text),              
-                    Capacity = int.Parse(textBoxCapacity.Text)
-                };
-
-                if (InfoIsInvalid(roomType))
-                {
-                    MessageBox.Show("Room information is missing.");
-                    return;
-                }
-
-                if (RoomInfoExists(roomType))
-                {
-                    MessageBox.Show("The room informatio already exists.");
-                    return;
-                }
-
-                if (Controller<VancouverHotelEntities, RoomType>.AddEntity(roomType) == null)
-                {
-                    MessageBox.Show("Cannot add Room information to database");
-                    return;
-                }
-
-
-            }
-
-            catch (Exception)
-            {
-                MessageBox.Show("Unable to add room type to database.");
-            }
-
-    
-            RoomInfoForm_Load();
-            context.SaveChanges();
-    
-        }
-
         /// <summary>
         /// Generic method to load a table and set it to a BindingList for use
         /// by DataGridView.
@@ -367,14 +361,14 @@ namespace ProjectTeam06Hotel
         }
 
         /// <summary>
-		/// Back up a DataSet to an XML file. 
-		/// 
-		/// File is named using the 
-		/// <see cref="DataSet.DataSetName"/> with .xml appended
-		/// </summary>
-		/// <param name="dataSet">DataSet to be backked up</param>
-		/// <param name="fileName">Name of the xml file (should have .xml extension)</param>
-		public void BackupDataSetToXML()
+        /// Back up a DataSet to an XML file. 
+        /// 
+        /// File is named using the 
+        /// <see cref="DataSet.DataSetName"/> with .xml appended
+        /// </summary>
+        /// <param name="dataSet">DataSet to be backked up</param>
+        /// <param name="fileName">Name of the xml file (should have .xml extension)</param>
+        public void BackupDataSetToXML()
         {
             if (hotelDataSet == null)
             {
@@ -388,7 +382,6 @@ namespace ProjectTeam06Hotel
 
             hotelDataSet.WriteXml(hotelDataSet.DataSetName + ".xml", XmlWriteMode.WriteSchema);
         }
-
 
         /// <summary>
         /// Make sure all room info exists and is not blank
