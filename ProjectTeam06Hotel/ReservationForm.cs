@@ -256,7 +256,7 @@ namespace ProjectTeam06Hotel
         private bool InfoIsInvalid(Reservation reservation)
         {
             return (reservation.ReservationDate == null || reservation.ReservationDate.Trim().Length == 0 ||
-                    reservation.NumberOfGuest == null || reservation.NumberOfGuest.ToString().Trim().Length == 0 ||
+                    reservation.NumberOfGuest == null || reservation.NumberOfGuest.ToString().Trim().Length == 0 || reservation.NumberOfGuest.ToString().Trim().Length <=4 ||
                     reservation.CheckInDate == null || reservation.CheckInDate.Trim().Length == 0 ||
                     reservation.CheckOutDate == null || reservation.CheckOutDate.Trim().Length == 0 
                     );
