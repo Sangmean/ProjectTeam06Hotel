@@ -155,7 +155,13 @@ namespace ProjectTeam06Hotel
                     return;
                 }
 
-                if (DateValidation(reservation))
+                if (CapacityIsValid(reservation))
+                {
+                    MessageBox.Show("Number of guest is greater than the capacity of the room");
+                    return;
+                }
+
+                if (DateIsValid(reservation))
                 {
                     MessageBox.Show("Check-in date is greater than Check-out date or Check-in date is greater than Reservation date");
                     return;
@@ -169,6 +175,7 @@ namespace ProjectTeam06Hotel
                     return;
                 }
 
+                context = new VancouverHotelEntities();
                 ReservationForm_Load();
                 context.SaveChanges();
             }
@@ -211,7 +218,13 @@ namespace ProjectTeam06Hotel
                     return;
                 }
 
-                if (DateValidation(reservation))
+                if (CapacityIsValid(reservation))
+                {
+                    MessageBox.Show("Number of guest is greater than the capacity of the room");
+                    return;
+                }
+
+                if (DateIsValid(reservation))
                 {
                     MessageBox.Show("Check-in date is greater than Check-out date or Check-in date is greater than Reservation date");
                     return;
@@ -292,12 +305,26 @@ namespace ProjectTeam06Hotel
         /// </summary>
         /// <param name="reservation"></param>
         /// <returns></returns>
-        private bool DateValidation(Reservation reservation)
+        private bool DateIsValid(Reservation reservation)
         {
             return Convert.ToDateTime(reservation.CheckInDate) >= Convert.ToDateTime(reservation.CheckOutDate) ||
                Convert.ToDateTime(reservation.ReservationDate) > Convert.ToDateTime(reservation.CheckInDate);
 
         }
-    }
 
+        /// <summary>
+        /// Check if the capacity is equal or greater than number of guest
+        /// </summary>
+        /// <param name="reservation"></param>
+        /// <returns></returns>
+        private bool CapacityIsValid(Reservation reservation)
+        {
+            Room room = context.Rooms.Find(reservation.RoomId);
+            RoomType roomType = context.RoomTypes.Find(room.RoomId);
+
+            return roomType.Capacity < reservation.NumberOfGuest;
+
+        }
+    }
 }
+
