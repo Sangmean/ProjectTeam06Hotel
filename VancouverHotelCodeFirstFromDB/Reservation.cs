@@ -2,7 +2,6 @@ namespace VancouverHotelCodeFirstFromDB
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
 
@@ -25,10 +24,8 @@ namespace VancouverHotelCodeFirstFromDB
 
         public String ReservationDate { get; set; }
 
-       // [Column(TypeName = "date")]
         public String CheckInDate { get; set; }
 
-       // [Column(TypeName = "date")]
         public String CheckOutDate { get; set; }
 
         public int? NumberOfGuest { get; set; }

@@ -1,14 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using VancouverHotelCodeFirstFromDB;
-using System.Data.Entity;
 using System.Diagnostics;
 using SeedDatabaseExtensions;
 
@@ -26,11 +18,12 @@ namespace ProjectTeam06Hotel
             context.SeedDatabase();
             context.SaveChanges();
 
+            // register the event handlers
             buttonAdmin.Click += ButtonAdmin_Click;
             buttonFrontDesk.Click += ButtonFrontDesk_Click;
             buttonPayment.Click += ButtonPayment_Click;
             buttonReservation.Click += ButtonReservation_Click;
-          
+
         }
 
         private void ButtonReservation_Click(object sender, EventArgs e)

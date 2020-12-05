@@ -12,7 +12,7 @@ namespace VancouverHotelCodeFirstFromDB
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public RoomType()
         {
-            //Rooms = new HashSet<Room>();
+          
         }
 
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
@@ -26,9 +26,6 @@ namespace VancouverHotelCodeFirstFromDB
 
         public decimal? PricePerNight { get; set; }
 
-       // [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-       // public virtual ICollection<Room> Rooms { get; set; }
 
-       // public virtual Room Room { get; set; }
     }
 }

@@ -1,16 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel;
-using System.Data;
 using System.Data.Entity;
 using System.Diagnostics;
-using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using EFControllerUtilities;
-using SeedDatabaseExtensions;
+
 using VancouverHotelCodeFirstFromDB;
 
 namespace ProjectTeam06Hotel
@@ -26,15 +21,15 @@ namespace ProjectTeam06Hotel
             context = new VancouverHotelEntities();
 
             // register the event handkers
-            this.Load += (s,e) => ReservationForm_Load();
+            this.Load += (s, e) => ReservationForm_Load();
             buttonBook.Click += ButtonBook_Click;
-            buttonCancelBooking.Click += buttonCancelBooking_Click;
+            buttonCancelBooking.Click += ButtonCancelBooking_Click;
             buttonUpdateRoom.Click += ButtonUpdateRoom_Click;
 
             // register event handler for when a guest is selected
             listBoxGuestName.SelectedIndexChanged += (s, e) => GetReservation();
             listBoxRoomType.SelectedIndexChanged += (s, e) => GetReservation();
-            dataGridViewReservations.SelectionChanged += DataGridViewReservation_SelectionChanged;  
+            dataGridViewReservations.SelectionChanged += DataGridViewReservation_SelectionChanged;
         }
 
         /// <summary>
@@ -42,10 +37,10 @@ namespace ProjectTeam06Hotel
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void buttonCancelBooking_Click(object sender, EventArgs e)
+        private void ButtonCancelBooking_Click(object sender, EventArgs e)
         {
             foreach (DataGridViewRow row in dataGridViewReservations.SelectedRows)
-            {         
+            {
                 Reservation reservation = row.DataBoundItem as Reservation;
                 context.Reservations.Remove(context.Reservations.Find(reservation.ReservationId));
             }
@@ -63,7 +58,7 @@ namespace ProjectTeam06Hotel
         private void ReservationForm_Load()
         {
             // bind the listbox of guest and rooms
-             
+
             listBoxGuestName.DataSource = Controller<VancouverHotelEntities, Guest>.SetBindingList();
             listBoxRoomType.DataSource = Controller<VancouverHotelEntities, Room>.SetBindingList();
 
@@ -88,10 +83,14 @@ namespace ProjectTeam06Hotel
 
             context = new VancouverHotelEntities();
             context.Database.Log = (s => Debug.Write(s));
-            context.Payments.Load();
+            context.Reservations.Load();
             context.SaveChanges();
         }
 
+        /// <summary>
+        /// Get a selected Reservation from the gridView and fill in the textboxes and a listbox with the
+        /// info.
+        /// </summary>
         private void DataGridViewReservation_SelectionChanged(object sender, EventArgs e)
         {
             Reservation reservation = new Reservation();
@@ -134,12 +133,14 @@ namespace ProjectTeam06Hotel
                 return;
             }
 
-            if (!string.IsNullOrEmpty(textBoxResevationID.Text) && !string.IsNullOrEmpty(textBoxGuestID.Text) && !string.IsNullOrEmpty(textBoxRoomID.Text) 
+            if (!string.IsNullOrEmpty(textBoxResevationID.Text) && !string.IsNullOrEmpty(textBoxGuestID.Text) && !string.IsNullOrEmpty(textBoxRoomID.Text)
                 && !string.IsNullOrEmpty(dateTimePickerReservation.Text) && !string.IsNullOrEmpty(textBoxNumberOfGuests.Text) && !string.IsNullOrEmpty(dateTimePickerCheckin.Text)
                 && !string.IsNullOrEmpty(dateTimePickerCheckOut.Text))
             {
                 var numNight = dateTimePickerCheckOut.Value.Day - dateTimePickerCheckin.Value.Day;
-                var reservation = context.Reservations.Find(int.Parse(textBoxResevationID.Text));
+                //  var reservation = context.Reservations.Find(int.Parse(textBoxResevationID.Text));
+                Reservation reservation = new Reservation();
+                reservation.ReservationId = int.Parse(textBoxResevationID.Text);
                 reservation.GuestId = int.Parse(textBoxGuestID.Text);
                 reservation.RoomId = int.Parse(textBoxRoomID.Text);
                 reservation.ReservationDate = dateTimePickerReservation.Text;
@@ -148,9 +149,28 @@ namespace ProjectTeam06Hotel
                 reservation.CheckOutDate = dateTimePickerCheckOut.Text;
                 reservation.NumberOfNight = Convert.ToInt32(numNight);
 
+                if (InfoIsInvalid(reservation))
+                {
+                    MessageBox.Show("Reservation Information is missing");
+                    return;
+                }
+
+                if (DateValidation(reservation))
+                {
+                    MessageBox.Show("Check-in date is greater than Check-out date or Check-in date is greater than Reservation date");
+                    return;
+                }
+
+                // now update the db
+
+                if (Controller<VancouverHotelEntities, Reservation>.UpdateEntity(reservation) == false)
+                {
+                    MessageBox.Show("Cannot add reservation to database");
+                    return;
+                }
+
                 ReservationForm_Load();
                 context.SaveChanges();
-                MessageBox.Show("Booked Infomation has been Updated");
             }
 
         }
@@ -170,14 +190,13 @@ namespace ProjectTeam06Hotel
                     return;
                 }
             }
-            try { 
+            try
+            {
                 // get the guest data from the textboxes
 
                 Reservation reservation = new Reservation();
 
                 var numNight = dateTimePickerCheckOut.Value.Day - dateTimePickerCheckin.Value.Day;
-
-                //reservation.ReservationId = Convert.ToInt32(textBoxResevationID.Text);
                 reservation.GuestId = Convert.ToInt32(textBoxGuestID.Text);
                 reservation.RoomId = Convert.ToInt32(textBoxRoomID.Text);
                 reservation.ReservationDate = dateTimePickerReservation.Text;
@@ -189,6 +208,13 @@ namespace ProjectTeam06Hotel
                 if (InfoIsInvalid(reservation))
                 {
                     MessageBox.Show("Reservation Information is missing");
+                    return;
+                }
+
+                if (DateValidation(reservation))
+                {
+                    MessageBox.Show("Check-in date is greater than Check-out date or Check-in date is greater than Reservation date");
+                    return;
                 }
 
                 // now update the db
@@ -201,9 +227,8 @@ namespace ProjectTeam06Hotel
             }
             catch (Exception)
             {
-                MessageBox.Show("Unable to book a reservation to database. Please fill missing info");
+                MessageBox.Show("Unable to book a reservation to database.");
             }
-
 
             InitializeDataGridView<Reservation>(dataGridViewReservations, "Reservation");
 
@@ -251,15 +276,27 @@ namespace ProjectTeam06Hotel
         /// <summary>
         /// Make sure all reservation info exists and is not blank
         /// </summary>
-        /// <param name="roomType"></param>
+        /// <param name="reservation"></param>
         /// <returns></returns>
         private bool InfoIsInvalid(Reservation reservation)
         {
             return (reservation.ReservationDate == null || reservation.ReservationDate.Trim().Length == 0 ||
-                    reservation.NumberOfGuest == null || reservation.NumberOfGuest.ToString().Trim().Length == 0 || reservation.NumberOfGuest.ToString().Trim().Length <=4 ||
+                    reservation.NumberOfGuest == null || reservation.NumberOfGuest.ToString().Trim().Length == 0 ||
                     reservation.CheckInDate == null || reservation.CheckInDate.Trim().Length == 0 ||
-                    reservation.CheckOutDate == null || reservation.CheckOutDate.Trim().Length == 0 
+                    reservation.CheckOutDate == null || reservation.CheckOutDate.Trim().Length == 0
                     );
+        }
+
+        /// <summary>
+        /// Check if date is valid input
+        /// </summary>
+        /// <param name="reservation"></param>
+        /// <returns></returns>
+        private bool DateValidation(Reservation reservation)
+        {
+            return Convert.ToDateTime(reservation.CheckInDate) >= Convert.ToDateTime(reservation.CheckOutDate) ||
+               Convert.ToDateTime(reservation.ReservationDate) > Convert.ToDateTime(reservation.CheckInDate);
+
         }
     }
 

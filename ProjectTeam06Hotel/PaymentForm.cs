@@ -1,13 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel;
-using System.Data;
 using System.Data.Entity;
 using System.Diagnostics;
 using System.Linq;
 using System.Windows.Forms;
 using EFControllerUtilities;
-using SeedDatabaseExtensions;
 using VancouverHotelCodeFirstFromDB;
 
 namespace ProjectTeam06Hotel
@@ -24,7 +21,7 @@ namespace ProjectTeam06Hotel
             context = new VancouverHotelEntities();
 
             // register the event handlers
-            this.Load += (s, e) => PaymentForm_Load();  
+            this.Load += (s, e) => PaymentForm_Load();
             buttonPay.Click += ButtonPay_Click;
             buttonPayUpdate.Click += ButtonPayUpdate_Click;
             buttonPayDelete.Click += ButtonPayDelete_Click;
@@ -45,21 +42,20 @@ namespace ProjectTeam06Hotel
         private void PaymentForm_Load()
         {
 
+            // initialize dataGridViewPayments
             InitializeDataGridView<Payment>(dataGridViewPayments, "Payment");
             this.dataGridViewPayments.Columns["Guest"].Visible = false;
             this.dataGridViewPayments.Columns["reservation"].Visible = false;
 
 
+            // initialize dataGridViewReservation
             InitializeDataGridView<Reservation>(dataGridViewReservationInfo, "Reservations");
             this.dataGridViewReservationInfo.Columns["Guest"].Visible = false;
             this.dataGridViewReservationInfo.Columns["Payments"].Visible = false;
             this.dataGridViewReservationInfo.Columns["Room"].Visible = false;
             this.dataGridViewReservationInfo.Columns["RoomReservations"].Visible = false;
 
-            dataGridViewReservationInfo.DataSource = context.Reservations.ToList();
-
             // set all textboxes to blank
-
             textBoxFirstName.ResetText();
             textBoxLastName.ResetText();
             textBoxNumberOfNight.ResetText();
@@ -103,7 +99,7 @@ namespace ProjectTeam06Hotel
 
             int roomTypeId = (int)reservation.Room.RoomTypeId;
             RoomType roomType = context.RoomTypes.Find(roomTypeId);
-            
+
             textBoxFirstName.Text = reservation.Guest.GuestFirstName;
             textBoxLastName.Text = reservation.Guest.GuestLastName;
             textBoxNumberOfNight.Text = reservation.NumberOfNight.ToString();
@@ -139,7 +135,7 @@ namespace ProjectTeam06Hotel
                 PaymentType = textBoxPayType.Text.ToString()
             };
 
-            if(pay.PaymentType.Trim() == null || pay.PaymentType.Length == 0)
+            if (pay.PaymentType.Trim() == null || pay.PaymentType.Length == 0)
             {
                 MessageBox.Show("Payment Type is requird");
                 return;
@@ -199,9 +195,9 @@ namespace ProjectTeam06Hotel
 
             Payment selectedPayment = new Payment();
 
+            // get selected payment information 
             foreach (DataGridViewRow row in dataGridViewPayments.SelectedRows)
                 selectedPayment = row.DataBoundItem as Payment;
-  
 
             Payment payment = new Payment();
             payment.PaymentId = selectedPayment.PaymentId;
@@ -216,7 +212,7 @@ namespace ProjectTeam06Hotel
                 return;
             }
 
-            if(payment.PaymentType == selectedPayment.PaymentType)
+            if (payment.PaymentType == selectedPayment.PaymentType)
             {
                 MessageBox.Show("The payment already exists");
                 return;
@@ -275,7 +271,6 @@ namespace ProjectTeam06Hotel
             BindingList<T> list = dbSet.Local.ToBindingList<T>();
             return list;
         }
-
 
         private void GridView_DataError<T>(DataGridView gridView, DataGridViewDataErrorEventArgs e)
         {

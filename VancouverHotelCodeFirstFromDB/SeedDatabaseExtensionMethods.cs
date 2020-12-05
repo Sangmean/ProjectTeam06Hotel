@@ -23,11 +23,6 @@ namespace SeedDatabaseExtensions
 
 			context.SaveChanges();
 
-			// another way to reinitialize the database, resetting everything and zeroing out data
-
-			//Database.SetInitializer(new DropCreateDatabaseAlways<StudentRegistrationEntities>());
-			//context.Database.Initialize(true);        
-
 			context.Guests.Load();
 			context.Rooms.Load();
 			context.RoomTypes.Load();
@@ -112,8 +107,6 @@ namespace SeedDatabaseExtensions
 
 			guestList[0].Reservations.Add(reservationList[0]);
 			guestList[1].Reservations.Add(reservationList[1]);
-
-
 
 			context.SaveChanges();
 		} 

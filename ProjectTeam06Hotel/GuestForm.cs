@@ -1,16 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using VancouverHotelCodeFirstFromDB;
 using System.Data.Entity;
 using System.Diagnostics;
-using SeedDatabaseExtensions;
 using EFControllerUtilities;
 
 namespace ProjectTeam06Hotel
@@ -25,7 +19,6 @@ namespace ProjectTeam06Hotel
             this.Text = "Guest Form";
             context = new VancouverHotelEntities();
             context.Database.Log = (s => Debug.Write(s));
-          //  context.SeedDatabase();
 
             // register the event handlers
             this.Load += (s, e) => GuestForm_Load();
@@ -78,7 +71,6 @@ namespace ProjectTeam06Hotel
             }
         }
 
-
         /// <summary>
         /// Add a Guest to the db
         /// </summary>
@@ -106,7 +98,7 @@ namespace ProjectTeam06Hotel
                     return;
                 }
 
-                if (Controller<VancouverHotelEntities,Guest>.AddEntity(guest) == null)
+                if (Controller<VancouverHotelEntities, Guest>.AddEntity(guest) == null)
                 {
                     MessageBox.Show("Cannot add guest infomation to database");
                     return;
@@ -210,7 +202,7 @@ namespace ProjectTeam06Hotel
                 guest.PostCode == null || guest.PostCode.Trim().Length == 0 ||
                 guest.Country == null || guest.Country.Trim().Length == 0 ||
                 guest.Email == null || guest.Email.Trim().Length == 0 ||
-                guest.Phone == null || guest.Phone.Trim().Length == 0); 
+                guest.Phone == null || guest.Phone.Trim().Length == 0);
         }
     }
 
