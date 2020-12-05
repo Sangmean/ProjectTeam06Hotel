@@ -63,6 +63,8 @@ namespace ProjectTeam06Hotel
             this.dataGridViewAddRoom.Columns["RoomReservation"].Visible = false;
             this.dataGridViewAddRoom.Columns["RoomTypes"].Visible = false;
 
+            dataGridViewRoom.DataSource = context.RoomTypes.ToList();
+            dataGridViewAddRoom.DataSource = context.Rooms.ToList();
         }
 
         /// <summary>
@@ -188,16 +190,16 @@ namespace ProjectTeam06Hotel
                 {
                     Room room = row.DataBoundItem as Room;
                     context.Rooms.Remove(room);
+                    context.SaveChanges();
                 }
-
-                context.SaveChanges();
             }
 
+            // cannot be deleted if the room has a booking
             catch (Exception)
             {
                 MessageBox.Show("The room cannot be deleted");
             }
-             
+
             RoomInfoForm_Load();
         }
 
@@ -225,6 +227,8 @@ namespace ProjectTeam06Hotel
                 MessageBox.Show("Cannot add Room to database");
                 return;
             }
+
+            context = new VancouverHotelEntities();
 
             RoomInfoForm_Load();
             context.SaveChanges();
@@ -264,22 +268,16 @@ namespace ProjectTeam06Hotel
                 room.RoomTypeId = selectedRoom.RoomTypeId;
                 room.Status = selectedStatus;
 
- /*               // check if the status is the same 
-                if (selectedRoom.Status == selectedStatus)
-                {
-                    MessageBox.Show("The room already exists");
-                }
-*/
-
                 if (Controller<VancouverHotelEntities, Room>.UpdateEntity(room) == false)
                 {
                     MessageBox.Show("Cannot update room to database");
                     return;
                 }
 
+                context = new VancouverHotelEntities();
 
-                RoomInfoForm_Load();
                 context.SaveChanges();
+                RoomInfoForm_Load();
 
             }
 
@@ -299,7 +297,7 @@ namespace ProjectTeam06Hotel
         {
             if ((dataGridViewRoom.SelectedRows == null))
             {
-                MessageBox.Show("RoomType to be updated must be selected");
+                MessageBox.Show("RoomType to be deleted must be selected");
                 return;
             }
 
